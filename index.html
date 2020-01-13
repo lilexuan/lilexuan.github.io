@@ -711,7 +711,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name "Your name"</span><br><span class="line">git config --global user.email "Your email"</span><br></pre></td></tr></table></figure>
 
 <p>执行下面命令创建ssh key, 一直按回车保持默认设置即可</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh-keygen -t rsa -C <span class="string">"Your email"</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C "Your email"</span><br></pre></td></tr></table></figure>
 
 <p>如果一切顺利的话, 可以在用户主目录处找到<code>.ssh</code>目录, 里面可以看到有<code>id_rsa</code>和’<code>id_rsa.pub</code>两个文件. 其中<code>id_rsa</code>是密钥, 不可以泄露. <code>id_rsa.pub</code>是公钥.</p>
 <p>然后登录github, 添加SSH Key</p>
