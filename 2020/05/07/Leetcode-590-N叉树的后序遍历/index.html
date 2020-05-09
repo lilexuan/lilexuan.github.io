@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="后序遍历,迭代遍历树," />
 
 
 
@@ -94,19 +94,22 @@
 
 
 
-<meta name="description" content="创建你的第一篇文章新建文章使用Hexo框架新建文章非常简单, 只需要在myBlog目录下执行以下命令即可 1hexo new post &#39;第一篇文章&#39;  执行完成之后, 就可以在myBlog\source\_posts目录下找到&quot;第一篇文章.md&quot;文件.  md是markdown的缩写, 下一节会介绍什么是markdown. markdown编辑器有很多, 我自己使用的是typ">
+<meta name="description" content="题目 给定一个 N 叉树，返回其节点值的后序遍历。 例如，给定一个 3叉树 :  返回其后序遍历: [5,6,3,2,4,1]. 说明: 递归法很简单，你可以使用迭代法完成此题吗?  思路一: 递归法正如题目中所言, 递归法确实很简单, 利用二叉树中的”左-右-根”顺序进行推广, 即先遍历子树, 最后将根的值放入list中即可 12345678910111213141516171819202122">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用Hexo+Github Page从零开始搭建自己的博客(二)——开始写作">
-<meta property="og:url" content="http://llx42.com/2020/01/12/%E5%88%A9%E7%94%A8Hexo-Github-Page%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2-%E4%BA%8C-%E2%80%94%E2%80%94%E5%BC%80%E5%A7%8B%E5%86%99%E4%BD%9C/index.html">
+<meta property="og:title" content="Leetcode-590 N叉树的后序遍历">
+<meta property="og:url" content="http://llx42.com/2020/05/07/Leetcode-590-N%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/index.html">
 <meta property="og:site_name" content="K-Space">
-<meta property="og:description" content="创建你的第一篇文章新建文章使用Hexo框架新建文章非常简单, 只需要在myBlog目录下执行以下命令即可 1hexo new post &#39;第一篇文章&#39;  执行完成之后, 就可以在myBlog\source\_posts目录下找到&quot;第一篇文章.md&quot;文件.  md是markdown的缩写, 下一节会介绍什么是markdown. markdown编辑器有很多, 我自己使用的是typ">
-<meta property="og:image" content="d:%5CPictures%5C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%5CAw31Vn5bjOFQIJg.png">
-<meta property="article:published_time" content="2020-01-12T15:17:52.000Z">
-<meta property="article:modified_time" content="2020-03-28T14:07:10.298Z">
+<meta property="og:description" content="题目 给定一个 N 叉树，返回其节点值的后序遍历。 例如，给定一个 3叉树 :  返回其后序遍历: [5,6,3,2,4,1]. 说明: 递归法很简单，你可以使用迭代法完成此题吗?  思路一: 递归法正如题目中所言, 递归法确实很简单, 利用二叉树中的”左-右-根”顺序进行推广, 即先遍历子树, 最后将根的值放入list中即可 12345678910111213141516171819202122">
+<meta property="og:image" content="https://i.loli.net/2020/05/07/3PbGIRixKQN8CkU.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/07/p7SHxJPRVlu6Toj.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/09/Gqe5HuVD7gX2KOS.png">
+<meta property="article:published_time" content="2020-05-07T14:58:43.000Z">
+<meta property="article:modified_time" content="2020-05-09T03:01:40.297Z">
 <meta property="article:author" content="Kelvin">
-<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="后序遍历">
+<meta property="article:tag" content="迭代遍历树">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:%5CPictures%5C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%5CAw31Vn5bjOFQIJg.png">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/07/3PbGIRixKQN8CkU.png">
 
 
 
@@ -135,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://llx42.com/2020/01/12/利用Hexo-Github-Page从零开始搭建自己的博客-二-——开始写作/"/>
+  <link rel="canonical" href="http://llx42.com/2020/05/07/Leetcode-590-N叉树的后序遍历/"/>
 
 
 
 
 
-  <title>利用Hexo+Github Page从零开始搭建自己的博客(二)——开始写作 | K-Space</title>
+  <title>Leetcode-590 N叉树的后序遍历 | K-Space</title>
   
 
 
@@ -274,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/01/12/%E5%88%A9%E7%94%A8Hexo-Github-Page%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2-%E4%BA%8C-%E2%80%94%E2%80%94%E5%BC%80%E5%A7%8B%E5%86%99%E4%BD%9C/">
+    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/05/07/Leetcode-590-N%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kelvin">
@@ -291,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">利用Hexo+Github Page从零开始搭建自己的博客(二)——开始写作</h1>
+          <h1 class="post-title" itemprop="name headline">Leetcode-590 N叉树的后序遍历</h1>
         
 
         <div class="post-meta">
@@ -303,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T23:17:52+08:00">
-                2020-01-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-07T22:58:43+08:00">
+                2020-05-07
               </time>
             
 
@@ -326,8 +329,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index">
-                    <span itemprop="name">从零开始创建博客</span>
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">Leetcode</span>
                   </a>
                 </span>
 
@@ -363,36 +366,27 @@
       
 
       
-        <h1 id="创建你的第一篇文章"><a href="#创建你的第一篇文章" class="headerlink" title="创建你的第一篇文章"></a>创建你的第一篇文章</h1><h2 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h2><p>使用Hexo框架新建文章非常简单, 只需要在<code>myBlog</code>目录下执行以下命令即可</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post '第一篇文章'</span><br></pre></td></tr></table></figure>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
+<p>给定一个 N 叉树，返回其节点值的<em>后序遍历</em>。</p>
+<p>例如，给定一个 <code>3叉树</code> :</p>
+<p><img src="https://i.loli.net/2020/05/07/3PbGIRixKQN8CkU.png" alt=""></p>
+<p>返回其后序遍历: <code>[5,6,3,2,4,1]</code>.</p>
+<p><strong>说明:</strong> 递归法很简单，你可以使用迭代法完成此题吗?</p>
+</blockquote>
+<h1 id="思路一-递归法"><a href="#思路一-递归法" class="headerlink" title="思路一: 递归法"></a>思路一: 递归法</h1><p>正如题目中所言, 递归法确实很简单, 利用二叉树中的”左-右-根”顺序进行推广, 即先遍历子树, 最后将根的值放入<code>list</code>中即可</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">// Definition for a Node.</span></span><br><span class="line"><span class="comment">class Node &#123;</span></span><br><span class="line"><span class="comment">    public int val;</span></span><br><span class="line"><span class="comment">    public List&lt;Node&gt; children;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    public Node() &#123;&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    public Node(int _val) &#123;</span></span><br><span class="line"><span class="comment">        val = _val;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    public Node(int _val, List&lt;Node&gt; _children) &#123;</span></span><br><span class="line"><span class="comment">        val = _val;</span></span><br><span class="line"><span class="comment">        children = _children;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">postorder</span><span class="params">(Node root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        postorder(root, list);</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">postorder</span><span class="params">(Node root, List&lt;Integer&gt; list)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">for</span> (Node child : root.children) &#123;</span><br><span class="line">            postorder(child, list);</span><br><span class="line">        &#125;</span><br><span class="line">        list.add(root.val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>执行完成之后, 就可以在<code>myBlog\source\_posts</code>目录下找到<code>&quot;第一篇文章.md&quot;</code>文件.</p>
-<p><img src="D:%5CPictures%5C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%5CAw31Vn5bjOFQIJg.png" alt=""></p>
-<p><code>md</code>是<code>markdown</code>的缩写, 下一节会介绍什么是<code>markdown</code>.</p>
-<p>markdown编辑器有很多, 我自己使用的是<code>typora</code>, <a href="https://www.typora.io/" target="_blank" rel="noopener">这里</a>是<code>typora</code>的官网.</p>
-<h2 id="Hexo中的布局"><a href="#Hexo中的布局" class="headerlink" title="Hexo中的布局"></a>Hexo中的布局</h2><p>刚刚提到的<code>post</code>是Hexo中布局(Layout)的一种. Hexo默认的布局有三种:<code>post</code>, <code>page</code>和<code>draft</code>, 分别代表了文章, 页面和草稿, 它们会被保存到不同的路径.</p>
-<table>
-<thead>
-<tr>
-<th align="center">布局</th>
-<th align="center">路径</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">post</td>
-<td align="center">source\_posts</td>
-</tr>
-<tr>
-<td align="center">page</td>
-<td align="center">source</td>
-</tr>
-<tr>
-<td align="center">draft</td>
-<td align="center">source\_drafts</td>
-</tr>
-</tbody></table>
-<h2 id="新建草稿"><a href="#新建草稿" class="headerlink" title="新建草稿"></a>新建草稿</h2><p>如果你只想</p>
-<h1 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h1><h1 id="图床配置"><a href="#图床配置" class="headerlink" title="图床配置"></a>图床配置</h1><h1 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h1><h1 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h1>
+<p><img src="https://i.loli.net/2020/05/07/p7SHxJPRVlu6Toj.png" alt=""></p>
+<h1 id="思路二-迭代"><a href="#思路二-迭代" class="headerlink" title="思路二: 迭代"></a>思路二: 迭代</h1><p>树的遍历除了用递归实现, 还可以用迭代实现.</p>
+<ol>
+<li>先将根结点入栈</li>
+<li>取出栈中结点, 并将结点的值放入结果队列的头部, 将其子结点按左到右的顺序入栈</li>
+<li>重复第二步直至栈为空</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">postorder</span><span class="params">(Node root)</span> </span>&#123;</span><br><span class="line">        LinkedList&lt;Node&gt; stack = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        LinkedList&lt;Integer&gt; output = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> output;</span><br><span class="line">        stack.add(root);</span><br><span class="line">        <span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">            Node tmpNode = stack.pollLast();</span><br><span class="line">            output.addFirst(tmpNode.val);</span><br><span class="line">            <span class="keyword">for</span> (Node child : tmpNode.children) &#123;</span><br><span class="line">                stack.add(child);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> output;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2020/05/09/Gqe5HuVD7gX2KOS.png" alt=""></p>
+
       
     </div>
     
@@ -409,7 +403,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag"># 后序遍历</a>
+          
+            <a href="/tags/%E8%BF%AD%E4%BB%A3%E9%81%8D%E5%8E%86%E6%A0%91/" rel="tag"># 迭代遍历树</a>
           
         </div>
       
@@ -422,8 +418,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/01/12/%E6%94%B9%E5%96%84Github%E8%BF%9E%E6%8E%A5%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E6%96%B9%E6%B3%95/" rel="next" title="改善Github连接速度慢的方法">
-                <i class="fa fa-chevron-left"></i> 改善Github连接速度慢的方法
+              <a href="/2020/05/07/Leetcode-700-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84x%E6%90%9C%E7%B4%A2/" rel="next" title="Leetcode-700 二叉搜索树中的搜索">
+                <i class="fa fa-chevron-left"></i> Leetcode-700 二叉搜索树中的搜索
               </a>
             
           </div>
@@ -431,10 +427,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/01/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" rel="prev" title="第一篇文章">
-                第一篇文章 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -568,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建你的第一篇文章"><span class="nav-number">1.</span> <span class="nav-text">创建你的第一篇文章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#新建文章"><span class="nav-number">1.1.</span> <span class="nav-text">新建文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo中的布局"><span class="nav-number">1.2.</span> <span class="nav-text">Hexo中的布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建草稿"><span class="nav-number">1.3.</span> <span class="nav-text">新建草稿</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Markdown"><span class="nav-number">2.</span> <span class="nav-text">Markdown</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图床配置"><span class="nav-number">3.</span> <span class="nav-text">图床配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主题配置"><span class="nav-number">4.</span> <span class="nav-text">主题配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绑定域名"><span class="nav-number">5.</span> <span class="nav-text">绑定域名</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路一-递归法"><span class="nav-number">2.</span> <span class="nav-text">思路一: 递归法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路二-迭代"><span class="nav-number">3.</span> <span class="nav-text">思路二: 迭代</span></a></li></ol></div>
             
 
           </div>
