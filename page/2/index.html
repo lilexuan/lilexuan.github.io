@@ -683,8 +683,128 @@
 <td align="center">source\_drafts</td>
 </tr>
 </tbody></table>
-<h2 id="新建草稿"><a href="#新建草稿" class="headerlink" title="新建草稿"></a>新建草稿</h2><p>如果你只想</p>
-<h1 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h1><h1 id="图床配置"><a href="#图床配置" class="headerlink" title="图床配置"></a>图床配置</h1><h1 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h1><h1 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h1>
+<p>比较常用的有文章post和草稿draft. 新建post的方法在上面也提到过了, 即</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post '文章名'</span><br></pre></td></tr></table></figure>
+
+<p>新建草稿则是</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new draft '文章名'</span><br></pre></td></tr></table></figure>
+
+<p>如果想将草稿移动到<code>source/_posts</code>文件夹, 则可以使用<code>publish</code>命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish post '文章名'</span><br></pre></td></tr></table></figure>
+
+<p>写好文章(post)之后, 需要在终端中进行生成(<code>hexo g</code>)和部署(). 不过在生成和部署之前, 最好使用<code>clean</code>命令清除缓存</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+<h2 id="分类与标签"><a href="#分类与标签" class="headerlink" title="分类与标签"></a>分类与标签</h2><p>新建的hexo文章会有一个头文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">title: xxx</span><br><span class="line">date: yyyy-dd-mm</span><br></pre></td></tr></table></figure>
+
+<p>可以在下面添加categories字段来说明分类, tags字段说明标签</p>
+<p>如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: xxx</span><br><span class="line">date: yyyy-dd-mm</span><br><span class="line">categories:</span><br><span class="line">- 分类</span><br><span class="line">tags:</span><br><span class="line">- 标签1</span><br><span class="line">- 标签2</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h1><p>Hexo中默认生成的新文章是Markdown格式的. Markdown是一种轻量级的标记语言, 相对于HTML, Latex等复杂的语法而言, Markdown的语法规则更为简单.</p>
+<p>下面做一些简单的介绍, 详细的可以看John Gguber的<a href="https://daringfireball.net/projects/markdown/syntax" target="_blank" rel="noopener">博客</a>以及其<a href="https://markdown-zh.readthedocs.io/en/latest/" target="_blank" rel="noopener">中译版</a>.</p>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>在Markdown中, 只要在文本前面加上<code>#</code>号, 并用空格隔开, 总共有六级标题. 例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
+
+<p>在Typora中, 输入Markdown语法之后会立刻渲染, 显示如下.</p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200705180524567.png" alt="image-20200705180524567"></p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>无序列表使用<code>-</code>或者<code>*</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 项目1</span><br><span class="line">- 项目2</span><br><span class="line">- 项目3</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>项目1</li>
+<li>项目2</li>
+<li>项目3</li>
+</ul>
+<p>有序列表使用数字+<code>.</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 项目1</span><br><span class="line">2. 项目2</span><br><span class="line">3. 项目3</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>项目1</li>
+<li>项目2</li>
+<li>项目3</li>
+</ol>
+<h2 id="插入超链接"><a href="#插入超链接" class="headerlink" title="插入超链接"></a>插入超链接</h2><p>插入超链接的方式为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[链接名称](超链接)</span><br></pre></td></tr></table></figure>
+
+<p>例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[百度](http:&#x2F;&#x2F;www.baidu.com)</span><br></pre></td></tr></table></figure>
+
+<p>效果为: <a href="http://www.baidu.com" target="_blank" rel="noopener">百度</a></p>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p>插入图片的方式为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![图片名称](图片路径)</span><br></pre></td></tr></table></figure>
+
+<p>其中图片路径可以是本地的相对路径或者绝对路径, 也可以是网络上的路径. 一般在部署博客时, 会使用图床来存放图片, 然后在博客上使用网络路径引用图片. 这样做的好处是部署博客时不需要上传图片, 加快部署速度. </p>
+<p>具体的图床配置下一小节会提到.</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; 引用内容</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>引用内容</p>
+</blockquote>
+<p>可以嵌套使用引用</p>
+<blockquote>
+<p>引用内容</p>
+<blockquote>
+<p>引用引用内容</p>
+<blockquote>
+<p>引用引用引用内容</p>
+<blockquote>
+<p>禁止套娃</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="粗体与斜体"><a href="#粗体与斜体" class="headerlink" title="粗体与斜体"></a>粗体与斜体</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">**粗体**</span><br><span class="line">*斜体*</span><br></pre></td></tr></table></figure>
+
+<p><strong>粗体</strong></p>
+<p><em>斜体</em></p>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">| 项目1 | 项目2 | 项目3 |</span><br><span class="line">| ----- | ----- | ----- |</span><br><span class="line">| 内容1 | 内容2 | 内容3 |</span><br><span class="line">| 内容4 | 内容5 | 内容6 |</span><br><span class="line">| 内容7 | 内容8 | 内容9 |</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>项目1</th>
+<th>项目2</th>
+<th>项目3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内容1</td>
+<td>内容2</td>
+<td>内容3</td>
+</tr>
+<tr>
+<td>内容4</td>
+<td>内容5</td>
+<td>内容6</td>
+</tr>
+<tr>
+<td>内容7</td>
+<td>内容8</td>
+<td>内容9</td>
+</tr>
+</tbody></table>
+<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><h3 id="行内代码块"><a href="#行内代码块" class="headerlink" title="行内代码块"></a>行内代码块</h3><p>行内代码块使用两个` 将代码包裹起来, 比如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对变量&#96;i&#96;进行自增</span><br></pre></td></tr></table></figure>
+
+<p>效果如下:</p>
+<p>对变量<code>i</code>进行自增</p>
+<h3 id="行间代码块"><a href="#行间代码块" class="headerlink" title="行间代码块"></a>行间代码块</h3><p>行间代码块使用一对```来将代码包裹起来. 在第一个```后面可以标记上所使用的语言, 比如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">​&#96;&#96;&#96;Java</span><br><span class="line">public static void main(String args[]) &#123;</span><br><span class="line">	System.out.println(&quot;Hello, fucking world!&quot;);</span><br><span class="line">&#125;</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96;Java</span><br><span class="line">public static void main(String args[]) &#123;</span><br><span class="line">    System.out.println(&quot;Hello, fucking world!&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>连续输入三个*号就是分割线</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">***</span><br><span class="line">分割线</span><br><span class="line">***</span><br><span class="line">分割线</span><br><span class="line">***</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>分割线</p>
+<hr>
+<p>分割线</p>
+<hr>
+<h1 id="图床配置"><a href="#图床配置" class="headerlink" title="图床配置"></a>图床配置</h1><h1 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h1><h1 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h1>
           
         
       
