@@ -383,7 +383,7 @@
 </li>
 <li><p>若<code>p[j]</code>是<code>?</code>, 说明模式<code>p</code>可以匹配任何一个字符, 当前字符匹配的结果取决于前一个字符匹配的结果. 动态转移方程为:<br>$$<br>dp[i][j]=dp[i-1][j-1]<br>$$</p>
 </li>
-<li><p>若<code>p[j]</code>是小写字母(最后剩下的情况), 那么<code>s[i]</code>和<code>p[j]</code>必须是相同的字母, 动态转移方程为:<br>$$<br>dp[i][j]=(s[i]==s[j])&amp;&amp;dp[i-1][j-1]<br>$$</p>
+<li><p>若<code>p[j]</code>是小写字母(最后剩下的情况), 那么<code>s[i]</code>和<code>p[j]</code>必须是相同的字母, 动态转移方程为:<br>$$<br>dp[i][j]=(s[i]==s[j])\ and\ dp[i-1][j-1]<br>$$</p>
 </li>
 </ol>
 <p>接下来看一下<code>dp</code>数组的边界情况.</p>

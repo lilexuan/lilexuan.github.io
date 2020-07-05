@@ -102,7 +102,7 @@
 <meta property="og:description" content="题目 给定一个字符串 (s) 和一个字符模式 (p) ，实现一个支持 ‘?’ 和 ‘*’ 的通配符匹配。 ‘?’ 可以匹配任何单个字符。‘*’ 可以匹配任意字符串（包括空字符串）。两个字符串完全匹配才算匹配成功。 说明: s 可能为空，且只包含从 a-z 的小写字母。p 可能为空，且只包含从 a-z 的小写字母，以及字符 ? 和 *。示例 1: 输入:s &#x3D; “aa”p &#x3D; “a”输出: fals">
 <meta property="og:image" content="https://i.loli.net/2020/07/05/4JAkoUdcKaSI6tx.png">
 <meta property="article:published_time" content="2020-07-05T04:41:53.000Z">
-<meta property="article:modified_time" content="2020-07-05T15:43:52.841Z">
+<meta property="article:modified_time" content="2020-07-05T15:46:08.177Z">
 <meta property="article:author" content="Kelvin">
 <meta property="article:tag" content="动态规划">
 <meta property="article:tag" content="字符串">
@@ -383,7 +383,7 @@
 </li>
 <li><p>若<code>p[j]</code>是<code>?</code>, 说明模式<code>p</code>可以匹配任何一个字符, 当前字符匹配的结果取决于前一个字符匹配的结果. 动态转移方程为:<br>$$<br>dp[i][j]=dp[i-1][j-1]<br>$$</p>
 </li>
-<li><p>若<code>p[j]</code>是小写字母(最后剩下的情况), 那么<code>s[i]</code>和<code>p[j]</code>必须是相同的字母, 动态转移方程为:<br>$$<br>dp[i][j]=(s[i]==s[j])&amp;&amp;dp[i-1][j-1]<br>$$</p>
+<li><p>若<code>p[j]</code>是小写字母(最后剩下的情况), 那么<code>s[i]</code>和<code>p[j]</code>必须是相同的字母, 动态转移方程为:<br>$$<br>dp[i][j]=(s[i]==s[j])\ and\ dp[i-1][j-1]<br>$$</p>
 </li>
 </ol>
 <p>接下来看一下<code>dp</code>数组的边界情况.</p>
