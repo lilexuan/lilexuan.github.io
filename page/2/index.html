@@ -813,56 +813,63 @@
           
             <h1 id="创建你的第一篇文章"><a href="#创建你的第一篇文章" class="headerlink" title="创建你的第一篇文章"></a>创建你的第一篇文章</h1><h2 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h2><p>使用Hexo框架新建文章非常简单, 只需要在<code>myBlog</code>目录下执行以下命令即可</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post '第一篇文章'</span><br></pre></td></tr></table></figure>
+
 <p>执行完成之后, 就可以在<code>myBlog\source\_posts</code>目录下找到<code>&quot;第一篇文章.md&quot;</code>文件.</p>
 <p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/Aw31Vn5bjOFQIJg.png" alt=""></p>
 <p><code>md</code>是<code>markdown</code>的缩写, 下一节会介绍什么是<code>markdown</code>.</p>
 <p>markdown编辑器有很多, 我自己使用的是<code>typora</code>, <a href="https://www.typora.io/" target="_blank" rel="noopener">这里</a>是<code>typora</code>的官网.</p>
 <h2 id="Hexo中的布局"><a href="#Hexo中的布局" class="headerlink" title="Hexo中的布局"></a>Hexo中的布局</h2><p>刚刚提到的<code>post</code>是Hexo中布局(Layout)的一种. Hexo默认的布局有三种:<code>post</code>, <code>page</code>和<code>draft</code>, 分别代表了文章, 页面和草稿, 它们会被保存到不同的路径.</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:center">布局</th>
-<th style="text-align:center">路径</th>
+<th align="center">布局</th>
+<th align="center">路径</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">post</td>
-<td style="text-align:center">source\\_posts</td>
+<tbody><tr>
+<td align="center">post</td>
+<td align="center">source\_posts</td>
 </tr>
 <tr>
-<td style="text-align:center">page</td>
-<td style="text-align:center">source</td>
+<td align="center">page</td>
+<td align="center">source</td>
 </tr>
 <tr>
-<td style="text-align:center">draft</td>
-<td style="text-align:center">source\\_drafts</td>
+<td align="center">draft</td>
+<td align="center">source\_drafts</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <p>比较常用的有文章post和草稿draft. 新建post的方法在上面也提到过了, 即</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post '文章名'</span><br></pre></td></tr></table></figure>
+
 <p>新建草稿则是</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new draft '文章名'</span><br></pre></td></tr></table></figure>
+
 <p>如果想将草稿移动到<code>source/_posts</code>文件夹, 则可以使用<code>publish</code>命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish post '文章名'</span><br></pre></td></tr></table></figure>
+
 <p>写好文章(post)之后, 需要在终端中进行生成(<code>hexo g</code>)和部署(). 不过在生成和部署之前, 最好使用<code>clean</code>命令清除缓存</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
 <h2 id="分类与标签"><a href="#分类与标签" class="headerlink" title="分类与标签"></a>分类与标签</h2><p>新建的hexo文章会有一个头文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">title: xxx</span><br><span class="line">date: yyyy-dd-mm</span><br></pre></td></tr></table></figure>
+
 <p>可以在下面添加categories字段来说明分类, tags字段说明标签</p>
 <p>如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: xxx</span><br><span class="line">date: yyyy-dd-mm</span><br><span class="line">categories:</span><br><span class="line">- 分类</span><br><span class="line">tags:</span><br><span class="line">- 标签1</span><br><span class="line">- 标签2</span><br></pre></td></tr></table></figure>
+
+
+
 <h1 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h1><p>Hexo中默认生成的新文章是Markdown格式的. Markdown是一种轻量级的标记语言, 相对于HTML, Latex等复杂的语法而言, Markdown的语法规则更为简单.</p>
 <p>下面做一些简单的介绍, 详细的可以看John Gguber的<a href="https://daringfireball.net/projects/markdown/syntax" target="_blank" rel="noopener">博客</a>以及其<a href="https://markdown-zh.readthedocs.io/en/latest/" target="_blank" rel="noopener">中译版</a>.</p>
 <h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>在Markdown中, 只要在文本前面加上<code>#</code>号, 并用空格隔开, 总共有六级标题. 例如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
+
 <p>在Typora中, 输入Markdown语法之后会立刻渲染, 显示如下.</p>
 <p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200705180524567.png" alt="image-20200705180524567"></p>
 <h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>无序列表使用<code>-</code>或者<code>*</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 项目1</span><br><span class="line">- 项目2</span><br><span class="line">- 项目3</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>项目1</li>
 <li>项目2</li>
@@ -870,6 +877,7 @@
 </ul>
 <p>有序列表使用数字+<code>.</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 项目1</span><br><span class="line">2. 项目2</span><br><span class="line">3. 项目3</span><br></pre></td></tr></table></figure>
+
 <ol>
 <li>项目1</li>
 <li>项目2</li>
@@ -877,14 +885,18 @@
 </ol>
 <h2 id="插入超链接"><a href="#插入超链接" class="headerlink" title="插入超链接"></a>插入超链接</h2><p>插入超链接的方式为</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[链接名称](超链接)</span><br></pre></td></tr></table></figure>
+
 <p>例如:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[百度](http:&#x2F;&#x2F;www.baidu.com)</span><br></pre></td></tr></table></figure>
+
 <p>效果为: <a href="http://www.baidu.com" target="_blank" rel="noopener">百度</a></p>
 <h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p>插入图片的方式为</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![图片名称](图片路径)</span><br></pre></td></tr></table></figure>
+
 <p>其中图片路径可以是本地的相对路径或者绝对路径, 也可以是网络上的路径. 一般在部署博客时, 会使用图床来存放图片, 然后在博客上使用网络路径引用图片. 这样做的好处是部署博客时不需要上传图片, 加快部署速度. </p>
 <p>具体的图床配置下一小节会提到.</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; 引用内容</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>引用内容</p>
 </blockquote>
@@ -902,10 +914,11 @@
 </blockquote>
 </blockquote>
 <h2 id="粗体与斜体"><a href="#粗体与斜体" class="headerlink" title="粗体与斜体"></a>粗体与斜体</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">**粗体**</span><br><span class="line">*斜体*</span><br></pre></td></tr></table></figure>
+
 <p><strong>粗体</strong></p>
 <p><em>斜体</em></p>
 <h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">| 项目1 | 项目2 | 项目3 |</span><br><span class="line">| ----- | ----- | ----- |</span><br><span class="line">| 内容1 | 内容2 | 内容3 |</span><br><span class="line">| 内容4 | 内容5 | 内容6 |</span><br><span class="line">| 内容7 | 内容8 | 内容9 |</span><br></pre></td></tr></table></figure>
-<div class="table-container">
+
 <table>
 <thead>
 <tr>
@@ -914,8 +927,7 @@
 <th>项目3</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>内容1</td>
 <td>内容2</td>
 <td>内容3</td>
@@ -930,18 +942,19 @@
 <td>内容8</td>
 <td>内容9</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><h3 id="行内代码块"><a href="#行内代码块" class="headerlink" title="行内代码块"></a>行内代码块</h3><p>行内代码块使用两个` 将代码包裹起来, 比如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对变量&#96;i&#96;进行自增</span><br></pre></td></tr></table></figure>
+
 <p>效果如下:</p>
 <p>对变量<code>i</code>进行自增</p>
 <h3 id="行间代码块"><a href="#行间代码块" class="headerlink" title="行间代码块"></a>行间代码块</h3><p>行间代码块使用一对```来将代码包裹起来. 在第一个```后面可以标记上所使用的语言, 比如:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">​&#96;&#96;&#96;Java</span><br><span class="line">public static void main(String args[]) &#123;</span><br><span class="line">	System.out.println(&quot;Hello, fucking world!&quot;);</span><br><span class="line">&#125;</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96;Java</span><br><span class="line">public static void main(String args[]) &#123;</span><br><span class="line">    System.out.println(&quot;Hello, fucking world!&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>连续输入三个*号就是分割线</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">***</span><br><span class="line">分割线</span><br><span class="line">***</span><br><span class="line">分割线</span><br><span class="line">***</span><br></pre></td></tr></table></figure>
+
 <hr>
 <p>分割线</p>
 <hr>
@@ -950,7 +963,7 @@
 <h1 id="图床配置"><a href="#图床配置" class="headerlink" title="图床配置"></a>图床配置</h1><p>图床是指存储图片的服务器, 使用图床的好处是可以减轻博客服务器的负担, 加快图片打开的速度. </p>
 <h3 id="免费图床"><a href="#免费图床" class="headerlink" title="免费图床"></a>免费图床</h3><p>可以使用<a href="https://imgchr.com/" target="_blank" rel="noopener">路过图床</a>等免费图床上传图片. 在网站注册完成之后, 就可以上传图片了. 上传完成之后, 直接将Markdown的链接放到自己的Markdown文件就可以了.</p>
 <p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200706152534392.png" alt="image-20200706152534392"></p>
-<h3 id="使用PicGo搭配Typora实现图片自动上传"><a href="#使用PicGo搭配Typora实现图片自动上传" class="headerlink" title="使用PicGo搭配Typora实现图片自动上传"></a>使用PicGo搭配Typora实现图片自动上传</h3><p>一旦文章里面用到的图片很多时, 一张张上传到图床并手动复制到Markdown文件里面是一件很麻烦的事情. 在Windows平台上可以通过Typora搭配PicGo来实现自动上传. 也是就说, 只要把图片复制到Typora上, 就可以实现自动上传到图床了.</p>
+<h3 id="Typora图片自动上传"><a href="#Typora图片自动上传" class="headerlink" title="Typora图片自动上传"></a>Typora图片自动上传</h3><p>一旦文章里面用到的图片很多时, 一张张上传到图床并手动复制到Markdown文件里面是一件很麻烦的事情. 在Windows平台上可以通过Typora搭配PicGo来实现自动上传. 也是就说, 只要把图片复制到Typora上, 就可以实现自动上传到图床了.</p>
 <h4 id="安装Typora和PicGo"><a href="#安装Typora和PicGo" class="headerlink" title="安装Typora和PicGo"></a>安装Typora和PicGo</h4><ul>
 <li>Typora需要到<a href="https://www.typora.io" target="_blank" rel="noopener">官网</a>下载安装, 需要<code>0.9.86</code>版本以上</li>
 <li>PicGo在对应的PicGo<a href="https://github.com/Molunerfinn/PicGo/releases" target="_blank" rel="noopener">release页面</a>下载安装, 需要<code>2.2.2</code>版本以上</li>
@@ -969,7 +982,7 @@
 <p>然后将压缩包解压, 将解压后的文件名(<code>hexo-theme-next-5.1.2</code>)改为<code>next</code>. 并将整个文件夹复制到<code>myBlog\themes</code>目录下面.</p>
 <p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200706170951254.png" alt="image-20200706170951254"></p>
 <h2 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h2><p>打开<code>站点配置文件</code>, 找到<code>theme</code>字段, 将值更改为<code>next</code></p>
-<p><img src="C:\Users\83452\AppData\Roaming\Typora\typora-user-images\image-20200706171219355.png" alt="image-20200706171219355"></p>
+<p><img src="C:%5CUsers%5C83452%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200706171219355.png" alt="image-20200706171219355"></p>
 <p>NexT主题有三种Scheme:</p>
 <ul>
 <li>Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白</li>
@@ -981,6 +994,7 @@
 <p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200706173335341.png" alt="image-20200706173335341"></p>
 <h2 id="设置语言"><a href="#设置语言" class="headerlink" title="设置语言"></a>设置语言</h2><p>在<code>站点配置文件</code>中, 将<code>language</code>设置成你所需要的语言, 一般设置为简体中文.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">language: zh-Hans</span><br></pre></td></tr></table></figure>
+
 <p>如果需要其他更详细的配置, 可以参照<a href="https://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">官方文档</a></p>
 
           
