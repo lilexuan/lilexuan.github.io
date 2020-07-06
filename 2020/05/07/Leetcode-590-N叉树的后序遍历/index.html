@@ -100,16 +100,16 @@
 <meta property="og:url" content="http://llx42.com/2020/05/07/Leetcode-590-N%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/index.html">
 <meta property="og:site_name" content="K-Space">
 <meta property="og:description" content="题目 给定一个 N 叉树，返回其节点值的后序遍历。 例如，给定一个 3叉树 :  返回其后序遍历: [5,6,3,2,4,1]. 说明: 递归法很简单，你可以使用迭代法完成此题吗?  思路一: 递归法正如题目中所言, 递归法确实很简单, 利用二叉树中的”左-右-根”顺序进行推广, 即先遍历子树, 最后将根的值放入list中即可 12345678910111213141516171819202122">
-<meta property="og:image" content="https://i.loli.net/2020/05/07/3PbGIRixKQN8CkU.png">
-<meta property="og:image" content="https://i.loli.net/2020/05/07/p7SHxJPRVlu6Toj.png">
+<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/3PbGIRixKQN8CkU.png">
+<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/p7SHxJPRVlu6Toj.png">
 <meta property="og:image" content="https://i.loli.net/2020/05/09/Gqe5HuVD7gX2KOS.png">
 <meta property="article:published_time" content="2020-05-07T14:58:43.000Z">
-<meta property="article:modified_time" content="2020-05-09T03:01:40.297Z">
+<meta property="article:modified_time" content="2020-07-06T07:36:35.974Z">
 <meta property="article:author" content="Kelvin">
 <meta property="article:tag" content="后序遍历">
 <meta property="article:tag" content="迭代遍历树">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/05/07/3PbGIRixKQN8CkU.png">
+<meta name="twitter:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/3PbGIRixKQN8CkU.png">
 
 
 
@@ -369,13 +369,14 @@
         <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
 <p>给定一个 N 叉树，返回其节点值的<em>后序遍历</em>。</p>
 <p>例如，给定一个 <code>3叉树</code> :</p>
-<p><img src="https://i.loli.net/2020/05/07/3PbGIRixKQN8CkU.png" alt=""></p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/3PbGIRixKQN8CkU.png" alt=""></p>
 <p>返回其后序遍历: <code>[5,6,3,2,4,1]</code>.</p>
 <p><strong>说明:</strong> 递归法很简单，你可以使用迭代法完成此题吗?</p>
 </blockquote>
 <h1 id="思路一-递归法"><a href="#思路一-递归法" class="headerlink" title="思路一: 递归法"></a>思路一: 递归法</h1><p>正如题目中所言, 递归法确实很简单, 利用二叉树中的”左-右-根”顺序进行推广, 即先遍历子树, 最后将根的值放入<code>list</code>中即可</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">// Definition for a Node.</span></span><br><span class="line"><span class="comment">class Node &#123;</span></span><br><span class="line"><span class="comment">    public int val;</span></span><br><span class="line"><span class="comment">    public List&lt;Node&gt; children;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    public Node() &#123;&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    public Node(int _val) &#123;</span></span><br><span class="line"><span class="comment">        val = _val;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    public Node(int _val, List&lt;Node&gt; _children) &#123;</span></span><br><span class="line"><span class="comment">        val = _val;</span></span><br><span class="line"><span class="comment">        children = _children;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">postorder</span><span class="params">(Node root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        postorder(root, list);</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">postorder</span><span class="params">(Node root, List&lt;Integer&gt; list)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">for</span> (Node child : root.children) &#123;</span><br><span class="line">            postorder(child, list);</span><br><span class="line">        &#125;</span><br><span class="line">        list.add(root.val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/05/07/p7SHxJPRVlu6Toj.png" alt=""></p>
+
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/p7SHxJPRVlu6Toj.png" alt=""></p>
 <h1 id="思路二-迭代"><a href="#思路二-迭代" class="headerlink" title="思路二: 迭代"></a>思路二: 迭代</h1><p>树的遍历除了用递归实现, 还可以用迭代实现.</p>
 <ol>
 <li>先将根结点入栈</li>
@@ -383,6 +384,7 @@
 <li>重复第二步直至栈为空</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">postorder</span><span class="params">(Node root)</span> </span>&#123;</span><br><span class="line">        LinkedList&lt;Node&gt; stack = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        LinkedList&lt;Integer&gt; output = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> output;</span><br><span class="line">        stack.add(root);</span><br><span class="line">        <span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">            Node tmpNode = stack.pollLast();</span><br><span class="line">            output.addFirst(tmpNode.val);</span><br><span class="line">            <span class="keyword">for</span> (Node child : tmpNode.children) &#123;</span><br><span class="line">                stack.add(child);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> output;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><img src="https://i.loli.net/2020/05/09/Gqe5HuVD7gX2KOS.png" alt=""></p>
 
       
