@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="动态规划,字符串," />
+  <meta name="keywords" content="动态规划," />
 
 
 
@@ -94,20 +94,26 @@
 
 
 
-<meta name="description" content="题目 给定一个字符串 (s) 和一个字符模式 (p) ，实现一个支持 ‘?’ 和 ‘*’ 的通配符匹配。 ‘?’ 可以匹配任何单个字符。‘*’ 可以匹配任意字符串（包括空字符串）。两个字符串完全匹配才算匹配成功。 说明: s 可能为空，且只包含从 a-z 的小写字母。p 可能为空，且只包含从 a-z 的小写字母，以及字符 ? 和 *。示例 1: 输入:s &#x3D; “aa”p &#x3D; “a”输出: fals">
+<meta name="description" content="题目 给你一个只包含 0 和 1 的 rows * columns 矩阵 mat ，请你返回有多少个 子矩形 的元素全部都是 1 。 示例 1： 输入：mat &#x3D; [[1,0,1],            [1,1,0],            [1,1,0]]输出：13解释：有 6 个 1x1 的矩形。有 2 个 1x2 的矩形。有 3 个 2x1 的矩形。有 1 个 2x2 的矩形。有 1 个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-44-通配符匹配">
-<meta property="og:url" content="http://llx42.com/2020/07/05/Leetcode-44-%E9%80%9A%E9%85%8D%E7%AC%A6%E5%8C%B9%E9%85%8D/index.html">
+<meta property="og:title" content="Leetcode-1504-统计全1子矩阵">
+<meta property="og:url" content="http://llx42.com/2020/07/07/Leetcode-1504-%E7%BB%9F%E8%AE%A1%E5%85%A81%E5%AD%90%E7%9F%A9%E9%98%B5/index.html">
 <meta property="og:site_name" content="K-Space">
-<meta property="og:description" content="题目 给定一个字符串 (s) 和一个字符模式 (p) ，实现一个支持 ‘?’ 和 ‘*’ 的通配符匹配。 ‘?’ 可以匹配任何单个字符。‘*’ 可以匹配任意字符串（包括空字符串）。两个字符串完全匹配才算匹配成功。 说明: s 可能为空，且只包含从 a-z 的小写字母。p 可能为空，且只包含从 a-z 的小写字母，以及字符 ? 和 *。示例 1: 输入:s &#x3D; “aa”p &#x3D; “a”输出: fals">
-<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/4JAkoUdcKaSI6tx.png">
-<meta property="article:published_time" content="2020-07-05T04:41:53.000Z">
-<meta property="article:modified_time" content="2020-07-06T07:35:09.129Z">
+<meta property="og:description" content="题目 给你一个只包含 0 和 1 的 rows * columns 矩阵 mat ，请你返回有多少个 子矩形 的元素全部都是 1 。 示例 1： 输入：mat &#x3D; [[1,0,1],            [1,1,0],            [1,1,0]]输出：13解释：有 6 个 1x1 的矩形。有 2 个 1x2 的矩形。有 3 个 2x1 的矩形。有 1 个 2x2 的矩形。有 1 个">
+<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707104214289.png">
+<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707101543387.png">
+<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707102219981.png">
+<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707102407898.png">
+<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707102615699.png">
+<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707102709427.png">
+<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707103723429.png">
+<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707103759951.png">
+<meta property="article:published_time" content="2020-07-07T01:53:23.000Z">
+<meta property="article:modified_time" content="2020-07-07T02:42:17.049Z">
 <meta property="article:author" content="Kelvin">
 <meta property="article:tag" content="动态规划">
-<meta property="article:tag" content="字符串">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/4JAkoUdcKaSI6tx.png">
+<meta name="twitter:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707104214289.png">
 
 
 
@@ -136,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://llx42.com/2020/07/05/Leetcode-44-通配符匹配/"/>
+  <link rel="canonical" href="http://llx42.com/2020/07/07/Leetcode-1504-统计全1子矩阵/"/>
 
 
 
 
 
-  <title>Leetcode-44-通配符匹配 | K-Space</title>
+  <title>Leetcode-1504-统计全1子矩阵 | K-Space</title>
   
 
 
@@ -275,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/05/Leetcode-44-%E9%80%9A%E9%85%8D%E7%AC%A6%E5%8C%B9%E9%85%8D/">
+    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/07/Leetcode-1504-%E7%BB%9F%E8%AE%A1%E5%85%A81%E5%AD%90%E7%9F%A9%E9%98%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kelvin">
@@ -292,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode-44-通配符匹配</h1>
+          <h1 class="post-title" itemprop="name headline">Leetcode-1504-统计全1子矩阵</h1>
         
 
         <div class="post-meta">
@@ -304,8 +310,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-05T12:41:53+08:00">
-                2020-07-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-07T09:53:23+08:00">
+                2020-07-07
               </time>
             
 
@@ -365,39 +371,36 @@
 
       
         <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
-<p>给定一个字符串 (s) 和一个字符模式 (p) ，实现一个支持 ‘?’ 和 ‘*’ 的通配符匹配。</p>
-<p>‘?’ 可以匹配任何单个字符。<br>‘*’ 可以匹配任意字符串（包括空字符串）。<br>两个字符串完全匹配才算匹配成功。</p>
-<p>说明:</p>
-<p>s 可能为空，且只包含从 a-z 的小写字母。<br>p 可能为空，且只包含从 a-z 的小写字母，以及字符 ? 和 *。<br>示例 1:</p>
-<p>输入:<br>s = “aa”<br>p = “a”<br>输出: false<br>解释: “a” 无法匹配 “aa” 整个字符串。<br>示例 2:</p>
-<p>输入:<br>s = “aa”<br>p = “<em>“<br>输出: true<br>解释: ‘</em>‘ 可以匹配任意字符串。<br>示例 3:</p>
-<p>输入:<br>s = “cb”<br>p = “?a”<br>输出: false<br>解释: ‘?’ 可以匹配 ‘c’, 但第二个 ‘a’ 无法匹配 ‘b’。<br>示例 4:</p>
-<p>输入:<br>s = “adceb”<br>p = “<em>a</em>b”<br>输出: true<br>解释: 第一个 ‘<em>‘ 可以匹配空字符串, 第二个 ‘</em>‘ 可以匹配字符串 “dce”.<br>示例 5:</p>
-<p>输入:<br>s = “acdcb”<br>p = “a*c?b”<br>输出: false</p>
+<p>给你一个只包含 0 和 1 的 rows * columns 矩阵 mat ，请你返回有多少个 子矩形 的元素全部都是 1 。</p>
+<p>示例 1：</p>
+<p>输入：mat = [[1,0,1],<br>            [1,1,0],<br>            [1,1,0]]<br>输出：13<br>解释：<br>有 6 个 1x1 的矩形。<br>有 2 个 1x2 的矩形。<br>有 3 个 2x1 的矩形。<br>有 1 个 2x2 的矩形。<br>有 1 个 3x1 的矩形。<br>矩形数目总共 = 6 + 2 + 3 + 1 + 1 = 13 。<br>示例 2：</p>
+<p>输入：mat = [[0,1,1,0],<br>            [0,1,1,1],<br>            [1,1,1,0]]<br>输出：24<br>解释：<br>有 8 个 1x1 的子矩形。<br>有 5 个 1x2 的子矩形。<br>有 2 个 1x3 的子矩形。<br>有 4 个 2x1 的子矩形。<br>有 2 个 2x2 的子矩形。<br>有 2 个 3x1 的子矩形。<br>有 1 个 3x2 的子矩形。<br>矩形数目总共 = 8 + 5 + 2 + 4 + 2 + 2 + 1 = 24 。<br>示例 3：</p>
+<p>输入：mat = [[1,1,1,1,1,1]]<br>输出：21<br>示例 4：</p>
+<p>输入：mat = [[1,0,1],[0,1,0],[1,0,1]]<br>输出：5</p>
+<p>提示：</p>
+<p>1 &lt;= rows &lt;= 150<br>1 &lt;= columns &lt;= 150<br>0 &lt;= mat[i][j] &lt;= 1</p>
 </blockquote>
-<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>可以用动态规划的思想来解决此题.</p>
-<p>假设<code>dp[i][j]</code>表示字符串<code>s</code>的前<code>i</code>个字符和模式<code>p</code>的前<code>j</code>个字符能否匹配.</p>
-<p>那么就有:</p>
-<ol>
-<li><p>若<code>p[j]</code>是<code>*</code>, 说明模式<code>p</code>对字符串没有任何要求, 若<code>*</code>匹配的是空字符串, 则说明当前<code>dp[i][j]</code>依赖于<code>dp[i][j-1]</code>. 如果<code>*</code>匹配的不是空字符串, 那么<code>dp[i][j]</code>则依赖于<code>dp[i-1][j]</code>. 即转移方程为:</p>
-<script type="math/tex; mode=display">
-dp[i][j]=dp[i][j-1]\ ||\ dp[i-1][j]</script></li>
-<li><p>若<code>p[j]</code>是<code>?</code>, 说明模式<code>p</code>可以匹配任何一个字符, 当前字符匹配的结果取决于前一个字符匹配的结果. 动态转移方程为:</p>
-<script type="math/tex; mode=display">
-dp[i][j]=dp[i-1][j-1]</script></li>
-<li><p>若<code>p[j]</code>是小写字母(最后剩下的情况), 那么<code>s[i]</code>和<code>p[j]</code>必须是相同的字母, 动态转移方程为:</p>
-<script type="math/tex; mode=display">
-dp[i][j]=(s[i]==s[j])\ and\ dp[i-1][j-1]</script></li>
-</ol>
-<p>接下来看一下<code>dp</code>数组的边界情况.</p>
-<ol>
-<li>当<code>i=j=0</code>时, 用空模式去匹配空字符串, 结果必然为真, 即<code>dp[0][0]=true</code></li>
-<li>当<code>j=0</code>, <code>i!=0</code>时, 用空模式去匹配非空字符串, 结果必然为假, 即<code>dp[i][0]=false</code></li>
-<li>当<code>i=0</code>, <code>j!=0</code>时, 用模式去匹配空字符串, 此时只有模式在<code>j</code>之前都为<code>*</code>才为真.</li>
-</ol>
-<p>具体代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMatch</span><span class="params">(String s, String p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = s.length(), n = p.length();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 初始化dp</span></span><br><span class="line">        <span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[m + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p.charAt(j - <span class="number">1</span>) == <span class="string">'*'</span>) &#123;</span><br><span class="line">                dp[<span class="number">0</span>][j] = <span class="keyword">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// dp迭代</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (p.charAt(j - <span class="number">1</span>) == <span class="string">'*'</span>) &#123;</span><br><span class="line">                    dp[i][j] = dp[i - <span class="number">1</span>][j] || dp[i][j - <span class="number">1</span>];</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p.charAt(j - <span class="number">1</span>) == <span class="string">'?'</span>) &#123;</span><br><span class="line">                    dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    dp[i][j] = (s.charAt(i - <span class="number">1</span>) == p.charAt(j - <span class="number">1</span>)) &amp;&amp; dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/4JAkoUdcKaSI6tx.png" alt=""></p>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="定义dp数组"><a href="#定义dp数组" class="headerlink" title="定义dp数组"></a>定义dp数组</h2><p>用<code>dp[i][j]</code>来表示从<code>mat[i][0]</code>到<code>mat[i][j]</code>最多有多少个连续的<code>1</code>. 动态转移方程为:</p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707104214289.png" alt="image-20200707104214289"></p>
+<p>而临界值<code>dp[i][0]</code>则等于<code>mat[i][0]</code>.</p>
+<p>比如下面的矩阵中, <code>dp[3][2]=3, dp[2][2]=2, dp[1][2]=3, dp[0][2]=1</code></p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707101543387.png" alt="image-20200707101543387"></p>
+<h2 id="计算思路"><a href="#计算思路" class="headerlink" title="计算思路"></a>计算思路</h2><p>对于每一个元素<code>mat[i][j]</code>, 我们将其当作一个矩阵的右下角来计算他能组成的矩阵数目.</p>
+<p>比如, 对于元素<code>mat[3][2]</code>, 以其作为矩阵的右下角, 只考虑<strong>最后一行</strong>(从0开始数, 第3行, 下同)所构成的矩阵, 他能构成的矩阵为三个, 如图所示.</p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707102219981.png" alt="image-20200707102219981"></p>
+<p>然后考虑由<strong>第2, 3行</strong>构成的, 以<code>mat[3][2]</code>为右下角的矩阵, 有两个, 如图所示.</p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707102407898.png" alt="image-20200707102407898"></p>
+<p>然后考虑由<strong>第1, 2, 3行</strong>构成的, 以<code>mat[3][2]</code>为右下角的矩阵, 也是有两个, 如图所示.</p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707102615699.png" alt="image-20200707102615699"></p>
+<p>最后, 由<strong>第0, 1, 2, 3行</strong>构成的, 以<code>mat[3][2]</code>为右下角的矩阵, 有一个, 如图所示.</p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707102709427.png" alt="image-20200707102709427"></p>
+<p>也就是说, 照着以上步骤的对矩阵<code>mat</code>中的每一个元素进行一遍以上的运算, 然后计算矩阵数的总和即可.</p>
+<p>那么, 最后还有一个问题. 以元素<code>mat[i][j]</code>为右下角的矩阵能构成的个数是怎么计算的呢?</p>
+<p>由上面的步骤可以轻松看出来, 对于元素<code>mat[i][j]</code>, 计算<code>k</code>到<code>i</code>行构成的矩阵数目时, 该数目等于<code>dp[k..i][j]</code>的最小值, 也就是连续为1的数量的最小值. 如图所示, 因为最小值为1, 所以可以构建的矩阵个数为1.</p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707103723429.png" alt="image-20200707103723429"></p>
+<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><p>代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numSubmat</span><span class="params">(<span class="keyword">int</span>[][] mat)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = mat.length, n = mat[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// dp初始化</span></span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = mat[i][<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 遍历每一个元素, 计算矩阵个数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">                <span class="comment">// mat[i][j]为0时, dp[i][j]直接置零, 说明在此位置没有连续1</span></span><br><span class="line">                <span class="keyword">if</span> (mat[i][j] == <span class="number">0</span>) &#123;</span><br><span class="line">                    dp[i][j] = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">                <span class="keyword">if</span> (j &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    dp[i][j] = dp[i][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = i; k &gt;= <span class="number">0</span>; k--) &#123;</span><br><span class="line">                    min = Math.min(min, dp[k][j]);</span><br><span class="line">                    sum += min;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707103759951.png" alt="image-20200707103759951"></p>
 
       
     </div>
@@ -417,8 +420,6 @@ dp[i][j]=(s[i]==s[j])\ and\ dp[i-1][j-1]</script></li>
           
             <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
           
-            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag"># 字符串</a>
-          
         </div>
       
 
@@ -430,8 +431,8 @@ dp[i][j]=(s[i]==s[j])\ and\ dp[i-1][j-1]</script></li>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/04/Leetcode-32-%E6%9C%80%E9%95%BF%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7/" rel="next" title="Leetcode-32-最长有效括号">
-                <i class="fa fa-chevron-left"></i> Leetcode-32-最长有效括号
+              <a href="/2020/07/07/Leetcode-1503-%E6%89%80%E6%9C%89%E8%9A%82%E8%9A%81%E6%8E%89%E4%B8%8B%E6%9D%A5%E5%89%8D%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E5%88%BB/" rel="next" title="Leetcode-1503-所有蚂蚁掉下来前的最后一刻">
+                <i class="fa fa-chevron-left"></i> Leetcode-1503-所有蚂蚁掉下来前的最后一刻
               </a>
             
           </div>
@@ -439,10 +440,6 @@ dp[i][j]=(s[i]==s[j])\ and\ dp[i-1][j-1]</script></li>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/06/Leetcode-63-%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84%E2%85%A1/" rel="prev" title="Leetcode-63-不同路径Ⅱ">
-                Leetcode-63-不同路径Ⅱ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -576,7 +573,7 @@ dp[i][j]=(s[i]==s[j])\ and\ dp[i-1][j-1]</script></li>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划"><span class="nav-number">2.</span> <span class="nav-text">动态规划</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划"><span class="nav-number">2.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义dp数组"><span class="nav-number">2.1.</span> <span class="nav-text">定义dp数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算思路"><span class="nav-number">2.2.</span> <span class="nav-text">计算思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现代码"><span class="nav-number">2.3.</span> <span class="nav-text">实现代码</span></a></li></ol></li></ol></div>
             
 
           </div>
