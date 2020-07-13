@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="模拟,脑筋急转弯," />
+  <meta name="keywords" content="动态规划," />
 
 
 
@@ -94,23 +94,19 @@
 
 
 
-<meta name="description" content="有一块木板，长度为 n 个 单位 。一些蚂蚁在木板上移动，每只蚂蚁都以 每秒一个单位 的速度移动。其中，一部分蚂蚁向 左 移动，其他蚂蚁向 右 移动。 当两只向 不同 方向移动的蚂蚁在某个点相遇时，它们会同时改变移动方向并继续移动。假设更改方向不会花费任何额外时间。 而当蚂蚁在某一时刻 t 到达木板的一端时，它立即从木板上掉下来。 给你一个整数 n 和两个整数数组 left 以及 right 。">
+<meta name="description" content="题目 一些恶魔抓住了公主（P）并将她关在了地下城的右下角。地下城是由 M x N 个房间组成的二维网格。我们英勇的骑士（K）最初被安置在左上角的房间里，他必须穿过地下城并通过对抗恶魔来拯救公主。 骑士的初始健康点数为一个正整数。如果他的健康点数在某一时刻降至 0 或以下，他会立即死亡。 有些房间由恶魔守卫，因此骑士在进入这些房间时会失去健康点数（若房间里的值为负整数，则表示骑士将损失健康点数）；其">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-1503-所有蚂蚁掉下来前的最后一刻">
-<meta property="og:url" content="http://llx42.com/2020/07/07/Leetcode-1503-%E6%89%80%E6%9C%89%E8%9A%82%E8%9A%81%E6%8E%89%E4%B8%8B%E6%9D%A5%E5%89%8D%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E5%88%BB/index.html">
+<meta property="og:title" content="Leetcode-174-地下城游戏">
+<meta property="og:url" content="http://llx42.com/2020/07/12/Leetcode-174-%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/index.html">
 <meta property="og:site_name" content="K-Space">
-<meta property="og:description" content="有一块木板，长度为 n 个 单位 。一些蚂蚁在木板上移动，每只蚂蚁都以 每秒一个单位 的速度移动。其中，一部分蚂蚁向 左 移动，其他蚂蚁向 右 移动。 当两只向 不同 方向移动的蚂蚁在某个点相遇时，它们会同时改变移动方向并继续移动。假设更改方向不会花费任何额外时间。 而当蚂蚁在某一时刻 t 到达木板的一端时，它立即从木板上掉下来。 给你一个整数 n 和两个整数数组 left 以及 right 。">
-<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/ants.jpg">
-<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/ants2.jpg">
-<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/ants3.jpg">
-<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707084531723.png">
-<meta property="article:published_time" content="2020-07-07T00:34:46.000Z">
-<meta property="article:modified_time" content="2020-07-07T00:45:39.200Z">
+<meta property="og:description" content="题目 一些恶魔抓住了公主（P）并将她关在了地下城的右下角。地下城是由 M x N 个房间组成的二维网格。我们英勇的骑士（K）最初被安置在左上角的房间里，他必须穿过地下城并通过对抗恶魔来拯救公主。 骑士的初始健康点数为一个正整数。如果他的健康点数在某一时刻降至 0 或以下，他会立即死亡。 有些房间由恶魔守卫，因此骑士在进入这些房间时会失去健康点数（若房间里的值为负整数，则表示骑士将损失健康点数）；其">
+<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200713103520292.png">
+<meta property="article:published_time" content="2020-07-12T02:13:33.000Z">
+<meta property="article:modified_time" content="2020-07-13T02:35:30.120Z">
 <meta property="article:author" content="Kelvin">
-<meta property="article:tag" content="模拟">
-<meta property="article:tag" content="脑筋急转弯">
+<meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/ants.jpg">
+<meta name="twitter:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200713103520292.png">
 
 
 
@@ -139,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://llx42.com/2020/07/07/Leetcode-1503-所有蚂蚁掉下来前的最后一刻/"/>
+  <link rel="canonical" href="http://llx42.com/2020/07/12/Leetcode-174-地下城游戏/"/>
 
 
 
 
 
-  <title>Leetcode-1503-所有蚂蚁掉下来前的最后一刻 | K-Space</title>
+  <title>Leetcode-174-地下城游戏 | K-Space</title>
   
 
 
@@ -278,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/07/Leetcode-1503-%E6%89%80%E6%9C%89%E8%9A%82%E8%9A%81%E6%8E%89%E4%B8%8B%E6%9D%A5%E5%89%8D%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E5%88%BB/">
+    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/12/Leetcode-174-%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kelvin">
@@ -295,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode-1503-所有蚂蚁掉下来前的最后一刻</h1>
+          <h1 class="post-title" itemprop="name headline">Leetcode-174-地下城游戏</h1>
         
 
         <div class="post-meta">
@@ -307,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-07T08:34:46+08:00">
-                2020-07-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-12T10:13:33+08:00">
+                2020-07-12
               </time>
             
 
@@ -367,28 +363,45 @@
       
 
       
-        <blockquote>
-<p>有一块木板，长度为 n 个 单位 。一些蚂蚁在木板上移动，每只蚂蚁都以 每秒一个单位 的速度移动。其中，一部分蚂蚁向 左 移动，其他蚂蚁向 右 移动。</p>
-<p>当两只向 不同 方向移动的蚂蚁在某个点相遇时，它们会同时改变移动方向并继续移动。假设更改方向不会花费任何额外时间。</p>
-<p>而当蚂蚁在某一时刻 t 到达木板的一端时，它立即从木板上掉下来。</p>
-<p>给你一个整数 n 和两个整数数组 left 以及 right 。两个数组分别标识向左或者向右移动的蚂蚁在 t = 0 时的位置。请你返回最后一只蚂蚁从木板上掉下来的时刻。</p>
-<p>示例 1：</p>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/ants.jpg" alt="img"></p>
-<p>输入：n = 4, left = [4,3], right = [0,1]<br>输出：4<br>解释：如上图所示：<br>-下标 0 处的蚂蚁命名为 A 并向右移动。<br>-下标 1 处的蚂蚁命名为 B 并向右移动。<br>-下标 3 处的蚂蚁命名为 C 并向左移动。<br>-下标 4 处的蚂蚁命名为 D 并向左移动。<br>请注意，蚂蚁在木板上的最后时刻是 t = 4 秒，之后蚂蚁立即从木板上掉下来。（也就是说在 t = 4.0000000001 时，木板上没有蚂蚁）。<br>示例 2：</p>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/ants2.jpg" alt="img"></p>
-<p>输入：n = 7, left = [], right = [0,1,2,3,4,5,6,7]<br>输出：7<br>解释：所有蚂蚁都向右移动，下标为 0 的蚂蚁需要 7 秒才能从木板上掉落。<br>示例 3：</p>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/ants3.jpg" alt="img"></p>
-<p>输入：n = 7, left = [0,1,2,3,4,5,6,7], right = []<br>输出：7<br>解释：所有蚂蚁都向左移动，下标为 7 的蚂蚁需要 7 秒才能从木板上掉落。<br>示例 4：</p>
-<p>输入：n = 9, left = [5], right = [4]<br>输出：5<br>解释：t = 1 秒时，两只蚂蚁将回到初始位置，但移动方向与之前相反。<br>示例 5：</p>
-<p>输入：n = 6, left = [6], right = [0]<br>输出：6</p>
-<p>提示：</p>
-<p>1 &lt;= n &lt;= 10^4<br>0 &lt;= left.length &lt;= n + 1<br>0 &lt;= left[i] &lt;= n<br>0 &lt;= right.length &lt;= n + 1<br>0 &lt;= right[i] &lt;= n<br>1 &lt;= left.length + right.length &lt;= n + 1<br>left 和 right 中的所有值都是唯一的，并且每个值 只能出现在二者之一 中。</p>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
+<p>一些恶魔抓住了公主（<strong>P</strong>）并将她关在了地下城的右下角。地下城是由 M x N 个房间组成的二维网格。我们英勇的骑士（<strong>K</strong>）最初被安置在左上角的房间里，他必须穿过地下城并通过对抗恶魔来拯救公主。</p>
+<p>骑士的初始健康点数为一个正整数。如果他的健康点数在某一时刻降至 0 或以下，他会立即死亡。</p>
+<p>有些房间由恶魔守卫，因此骑士在进入这些房间时会失去健康点数（若房间里的值为<em>负整数</em>，则表示骑士将损失健康点数）；其他房间要么是空的（房间里的值为 <em>0</em>），要么包含增加骑士健康点数的魔法球（若房间里的值为<em>正整数</em>，则表示骑士将增加健康点数）。</p>
+<p>为了尽快到达公主，骑士决定每次只向右或向下移动一步。</p>
+<p><strong>编写一个函数来计算确保骑士能够拯救到公主所需的最低初始健康点数。</strong></p>
+<p>例如，考虑到如下布局的地下城，如果骑士遵循最佳路径 <code>右 -&gt; 右 -&gt; 下 -&gt; 下</code>，则骑士的初始健康点数至少为 <strong>7</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>-2 (K)</th>
+<th>-3</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-5</td>
+<td>-10</td>
+<td>1</td>
+</tr>
+<tr>
+<td>10</td>
+<td>30</td>
+<td>-5 (P)</td>
+</tr>
+</tbody></table>
+<p><strong>说明:</strong></p>
+<ul>
+<li>骑士的健康点数没有上限。</li>
+<li>任何房间都可能对骑士的健康点数造成威胁，也可能增加骑士的健康点数，包括骑士进入的左上角房间以及公主被监禁的右下角房间。</li>
+</ul>
 </blockquote>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>乍一看这题目很复杂, 但是其实只要转换一下思路, 不区分具体的蚂蚁, 其实碰撞之后掉头和直接穿过去的结果是一样的. 那么问题就变成了求最晚落地的蚂蚁所需要的时间. 也就是最晚落地蚂蚁所走过的路径长度.</p>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>此处需要按照<strong>从右下角到左上角</strong>的顺序进行动态规划.</p>
+<p>假设<code>dp[i][j]</code>为在位置<code>(i, j)</code>到终点所需要的最小起始生命值. 假设<code>dp[i+1][j]</code>和<code>dp[i][j+1]</code>是已知的, 那么<code>dp[i][j]</code>应该等于<code>dp[i+1][j]</code>和<code>dp[i][j+1]</code>的最小值, 再减去当前位置所要消耗的生命值<code>dungeon(i,j)</code>, 并且要注意, 初始生命值应该是大于等于1的. </p>
+<p>根据上述描述可知, 动态转移方程为<br>$$<br>dp[i][j]=max(min(dp[i+1][j], dp[i][j+1])-deungen(i, j), 1)<br>$$<br>对于边界条件, 需要对<code>dp[n][m-1]</code>和<code>dp[n-1][m]</code>设置为1, 而<code>dp</code>其他位置则需要设置为<code>Integer.MAX_VALUE</code>.</p>
 <p>代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLastMoment</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[] left, <span class="keyword">int</span>[] right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> max = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; left.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (left[i] &gt; max) max = left[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; right.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n - right[i] &gt; max) max = n - right[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculateMinimumHP</span><span class="params">(<span class="keyword">int</span>[][] dungeon)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = dungeon.length, m = dungeon[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> dp[][] = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>][m + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            Arrays.fill(dp[i], Integer.MAX_VALUE);</span><br><span class="line">        &#125;</span><br><span class="line">        dp[n][m - <span class="number">1</span>] = dp[n - <span class="number">1</span>][m] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = m - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">                dp[i][j] = Math.max(<span class="number">1</span>, Math.min(dp[i + <span class="number">1</span>][j], dp[i][j + <span class="number">1</span>]) - dungeon[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707084531723.png" alt="image-20200707084531723"></p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200713103520292.png" alt="image-20200713103520292"></p>
 
       
     </div>
@@ -406,9 +419,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag"># 模拟</a>
-          
-            <a href="/tags/%E8%84%91%E7%AD%8B%E6%80%A5%E8%BD%AC%E5%BC%AF/" rel="tag"># 脑筋急转弯</a>
+            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
           
         </div>
       
@@ -421,8 +432,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/07/Leetcode-112-%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/" rel="next" title="Leetcode-112-路径总和">
-                <i class="fa fa-chevron-left"></i> Leetcode-112-路径总和
+              <a href="/2020/07/10/Leetcode-309-%E6%9C%80%E4%BD%B3%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%97%B6%E6%9C%BA%E5%90%AB%E5%86%B7%E5%86%BB%E6%9C%9F/" rel="next" title="Leetcode-309-最佳买卖股票时机含冷冻期">
+                <i class="fa fa-chevron-left"></i> Leetcode-309-最佳买卖股票时机含冷冻期
               </a>
             
           </div>
@@ -431,8 +442,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/07/07/Leetcode-1504-%E7%BB%9F%E8%AE%A1%E5%85%A81%E5%AD%90%E7%9F%A9%E9%98%B5/" rel="prev" title="Leetcode-1504-统计全1子矩阵">
-                Leetcode-1504-统计全1子矩阵 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/07/13/Leetcode-350-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86%E2%85%A1/" rel="prev" title="Leetcode-350-两个数组的交集Ⅱ">
+                Leetcode-350-两个数组的交集Ⅱ <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -567,7 +578,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#思路"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划"><span class="nav-number">2.</span> <span class="nav-text">动态规划</span></a></li></ol></div>
             
 
           </div>
@@ -745,6 +756,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
