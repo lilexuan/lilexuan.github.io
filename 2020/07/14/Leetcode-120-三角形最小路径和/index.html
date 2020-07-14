@@ -94,19 +94,20 @@
 
 
 
-<meta name="description" content="题目 一些恶魔抓住了公主（P）并将她关在了地下城的右下角。地下城是由 M x N 个房间组成的二维网格。我们英勇的骑士（K）最初被安置在左上角的房间里，他必须穿过地下城并通过对抗恶魔来拯救公主。 骑士的初始健康点数为一个正整数。如果他的健康点数在某一时刻降至 0 或以下，他会立即死亡。 有些房间由恶魔守卫，因此骑士在进入这些房间时会失去健康点数（若房间里的值为负整数，则表示骑士将损失健康点数）；其">
+<meta name="description" content="题目 给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。 相邻的结点 在这里指的是 下标 与 上一层结点下标 相同或者等于 上一层结点下标 + 1 的两个结点。 例如，给定三角形：  自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 &#x3D; 11）。  动态规划假设dp[i][j]是处于位置(i, j)时的最小路径总和. 由于位置(i, j)只能从位置(i-1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-174-地下城游戏">
-<meta property="og:url" content="http://llx42.com/2020/07/12/Leetcode-174-%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/index.html">
+<meta property="og:title" content="Leetcode-120-三角形最小路径和">
+<meta property="og:url" content="http://llx42.com/2020/07/14/Leetcode-120-%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/index.html">
 <meta property="og:site_name" content="K-Space">
-<meta property="og:description" content="题目 一些恶魔抓住了公主（P）并将她关在了地下城的右下角。地下城是由 M x N 个房间组成的二维网格。我们英勇的骑士（K）最初被安置在左上角的房间里，他必须穿过地下城并通过对抗恶魔来拯救公主。 骑士的初始健康点数为一个正整数。如果他的健康点数在某一时刻降至 0 或以下，他会立即死亡。 有些房间由恶魔守卫，因此骑士在进入这些房间时会失去健康点数（若房间里的值为负整数，则表示骑士将损失健康点数）；其">
-<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200713103520292.png">
-<meta property="article:published_time" content="2020-07-12T02:13:33.000Z">
-<meta property="article:modified_time" content="2020-07-13T02:35:30.120Z">
+<meta property="og:description" content="题目 给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。 相邻的结点 在这里指的是 下标 与 上一层结点下标 相同或者等于 上一层结点下标 + 1 的两个结点。 例如，给定三角形：  自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 &#x3D; 11）。  动态规划假设dp[i][j]是处于位置(i, j)时的最小路径总和. 由于位置(i, j)只能从位置(i-1">
+<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200714105032667.png">
+<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200714105910433.png">
+<meta property="article:published_time" content="2020-07-14T02:47:44.000Z">
+<meta property="article:modified_time" content="2020-07-14T02:59:32.005Z">
 <meta property="article:author" content="Kelvin">
 <meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200713103520292.png">
+<meta name="twitter:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200714105032667.png">
 
 
 
@@ -135,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://llx42.com/2020/07/12/Leetcode-174-地下城游戏/"/>
+  <link rel="canonical" href="http://llx42.com/2020/07/14/Leetcode-120-三角形最小路径和/"/>
 
 
 
 
 
-  <title>Leetcode-174-地下城游戏 | K-Space</title>
+  <title>Leetcode-120-三角形最小路径和 | K-Space</title>
   
 
 
@@ -274,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/12/Leetcode-174-%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/">
+    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/14/Leetcode-120-%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kelvin">
@@ -291,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode-174-地下城游戏</h1>
+          <h1 class="post-title" itemprop="name headline">Leetcode-120-三角形最小路径和</h1>
         
 
         <div class="post-meta">
@@ -303,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-12T10:13:33+08:00">
-                2020-07-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-14T10:47:44+08:00">
+                2020-07-14
               </time>
             
 
@@ -364,44 +365,20 @@
 
       
         <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
-<p>一些恶魔抓住了公主（<strong>P</strong>）并将她关在了地下城的右下角。地下城是由 M x N 个房间组成的二维网格。我们英勇的骑士（<strong>K</strong>）最初被安置在左上角的房间里，他必须穿过地下城并通过对抗恶魔来拯救公主。</p>
-<p>骑士的初始健康点数为一个正整数。如果他的健康点数在某一时刻降至 0 或以下，他会立即死亡。</p>
-<p>有些房间由恶魔守卫，因此骑士在进入这些房间时会失去健康点数（若房间里的值为<em>负整数</em>，则表示骑士将损失健康点数）；其他房间要么是空的（房间里的值为 <em>0</em>），要么包含增加骑士健康点数的魔法球（若房间里的值为<em>正整数</em>，则表示骑士将增加健康点数）。</p>
-<p>为了尽快到达公主，骑士决定每次只向右或向下移动一步。</p>
-<p><strong>编写一个函数来计算确保骑士能够拯救到公主所需的最低初始健康点数。</strong></p>
-<p>例如，考虑到如下布局的地下城，如果骑士遵循最佳路径 <code>右 -&gt; 右 -&gt; 下 -&gt; 下</code>，则骑士的初始健康点数至少为 <strong>7</strong>。</p>
-<table>
-<thead>
-<tr>
-<th>-2 (K)</th>
-<th>-3</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-5</td>
-<td>-10</td>
-<td>1</td>
-</tr>
-<tr>
-<td>10</td>
-<td>30</td>
-<td>-5 (P)</td>
-</tr>
-</tbody></table>
-<p><strong>说明:</strong></p>
-<ul>
-<li>骑士的健康点数没有上限。</li>
-<li>任何房间都可能对骑士的健康点数造成威胁，也可能增加骑士的健康点数，包括骑士进入的左上角房间以及公主被监禁的右下角房间。</li>
-</ul>
+<p>给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。</p>
+<p>相邻的结点 在这里指的是 下标 与 上一层结点下标 相同或者等于 上一层结点下标 + 1 的两个结点。</p>
+<p>例如，给定三角形：</p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200714105032667.png" alt="image-20200714105032667"></p>
+<p>自顶向下的最小路径和为 <code>11</code>（即，<strong>2</strong> + <strong>3</strong> + <strong>5</strong> + <strong>1</strong> = 11）。</p>
 </blockquote>
-<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>此处需要按照<strong>从右下角到左上角</strong>的顺序进行动态规划.</p>
-<p>假设<code>dp[i][j]</code>为在位置<code>(i, j)</code>到终点所需要的最小起始生命值. 假设<code>dp[i+1][j]</code>和<code>dp[i][j+1]</code>是已知的, 那么<code>dp[i][j]</code>应该等于<code>dp[i+1][j]</code>和<code>dp[i][j+1]</code>的最小值, 再减去当前位置所要消耗的生命值<code>dungeon(i,j)</code>, 并且要注意, 初始生命值应该是大于等于1的. </p>
-<p>根据上述描述可知, 动态转移方程为<br>$$<br>dp[i][j]=max(min(dp[i+1][j], dp[i][j+1])-deungen(i, j), 1)<br>$$<br>对于边界条件, 需要对<code>dp[n][m-1]</code>和<code>dp[n-1][m]</code>设置为1, 而<code>dp</code>其他位置则需要设置为<code>Integer.MAX_VALUE</code>.</p>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>假设<code>dp[i][j]</code>是处于位置<code>(i, j)</code>时的最小路径总和.</p>
+<p>由于位置<code>(i, j)</code>只能从位置<code>(i-1,j-1)</code>和位置<code>(i-1, j)</code>过来, 那么可以很容易的知道动态转移方程为:<br>$$<br>dp[i][j]=min(dp[i-1][j-1], dp[i-1][j])+triange[i][j]<br>$$<br><strong><code>dp</code>初始化</strong></p>
+<p>对<code>dp</code>所有元素初始赋值为<code>Integer.MAX_VALUE</code>, 方便进行比较最小值.</p>
+<p>需要注意的是, <code>dp[i][0]</code>只能从上方转移, 所以初始化的时候需要另外处理.</p>
 <p>代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculateMinimumHP</span><span class="params">(<span class="keyword">int</span>[][] dungeon)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = dungeon.length, m = dungeon[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> dp[][] = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>][m + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            Arrays.fill(dp[i], Integer.MAX_VALUE);</span><br><span class="line">        &#125;</span><br><span class="line">        dp[n][m - <span class="number">1</span>] = dp[n - <span class="number">1</span>][m] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = m - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">                dp[i][j] = Math.max(<span class="number">1</span>, Math.min(dp[i + <span class="number">1</span>][j], dp[i][j + <span class="number">1</span>]) - dungeon[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minimumTotal</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; triangle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = triangle.size();</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n][n];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// dp初始化</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            Arrays.fill(dp[i], Integer.MAX_VALUE);</span><br><span class="line">        &#125;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = triangle.get(<span class="number">0</span>).get(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = triangle.get(i).get(<span class="number">0</span>) + dp[i - <span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++) &#123;</span><br><span class="line">                dp[i][j] = Math.min(dp[i - <span class="number">1</span>][j - <span class="number">1</span>], dp[i - <span class="number">1</span>][j]) + triangle.get(i).get(j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (dp[n - <span class="number">1</span>][j] &lt; min) &#123;</span><br><span class="line">                min = dp[n - <span class="number">1</span>][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// for (int i = 0; i &lt; n; i++) &#123;</span></span><br><span class="line">        <span class="comment">//     System.out.println(Arrays.toString(dp[i]));</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="keyword">return</span> min;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200713103520292.png" alt="image-20200713103520292"></p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200714105910433.png" alt="image-20200714105910433"></p>
 
       
     </div>
@@ -432,8 +409,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/10/Leetcode-309-%E6%9C%80%E4%BD%B3%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%97%B6%E6%9C%BA%E5%90%AB%E5%86%B7%E5%86%BB%E6%9C%9F/" rel="next" title="Leetcode-309-最佳买卖股票时机含冷冻期">
-                <i class="fa fa-chevron-left"></i> Leetcode-309-最佳买卖股票时机含冷冻期
+              <a href="/2020/07/13/Leetcode-350-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86%E2%85%A1/" rel="next" title="Leetcode-350-两个数组的交集Ⅱ">
+                <i class="fa fa-chevron-left"></i> Leetcode-350-两个数组的交集Ⅱ
               </a>
             
           </div>
@@ -441,10 +418,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/13/Leetcode-350-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86%E2%85%A1/" rel="prev" title="Leetcode-350-两个数组的交集Ⅱ">
-                Leetcode-350-两个数组的交集Ⅱ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
