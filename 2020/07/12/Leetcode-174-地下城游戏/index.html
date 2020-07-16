@@ -370,6 +370,7 @@
 <p>为了尽快到达公主，骑士决定每次只向右或向下移动一步。</p>
 <p><strong>编写一个函数来计算确保骑士能够拯救到公主所需的最低初始健康点数。</strong></p>
 <p>例如，考虑到如下布局的地下城，如果骑士遵循最佳路径 <code>右 -&gt; 右 -&gt; 下 -&gt; 下</code>，则骑士的初始健康点数至少为 <strong>7</strong>。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -378,7 +379,8 @@
 <th>3</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-5</td>
 <td>-10</td>
 <td>1</td>
@@ -388,7 +390,9 @@
 <td>30</td>
 <td>-5 (P)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>说明:</strong></p>
 <ul>
 <li>骑士的健康点数没有上限。</li>
@@ -397,10 +401,11 @@
 </blockquote>
 <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>此处需要按照<strong>从右下角到左上角</strong>的顺序进行动态规划.</p>
 <p>假设<code>dp[i][j]</code>为在位置<code>(i, j)</code>到终点所需要的最小起始生命值. 假设<code>dp[i+1][j]</code>和<code>dp[i][j+1]</code>是已知的, 那么<code>dp[i][j]</code>应该等于<code>dp[i+1][j]</code>和<code>dp[i][j+1]</code>的最小值, 再减去当前位置所要消耗的生命值<code>dungeon(i,j)</code>, 并且要注意, 初始生命值应该是大于等于1的. </p>
-<p>根据上述描述可知, 动态转移方程为<br>$$<br>dp[i][j]=max(min(dp[i+1][j], dp[i][j+1])-deungen(i, j), 1)<br>$$<br>对于边界条件, 需要对<code>dp[n][m-1]</code>和<code>dp[n-1][m]</code>设置为1, 而<code>dp</code>其他位置则需要设置为<code>Integer.MAX_VALUE</code>.</p>
+<p>根据上述描述可知, 动态转移方程为</p>
+<script type="math/tex; mode=display">
+dp[i][j]=max(min(dp[i+1][j], dp[i][j+1])-deungen(i, j), 1)</script><p>对于边界条件, 需要对<code>dp[n][m-1]</code>和<code>dp[n-1][m]</code>设置为1, 而<code>dp</code>其他位置则需要设置为<code>Integer.MAX_VALUE</code>.</p>
 <p>代码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculateMinimumHP</span><span class="params">(<span class="keyword">int</span>[][] dungeon)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = dungeon.length, m = dungeon[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> dp[][] = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>][m + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            Arrays.fill(dp[i], Integer.MAX_VALUE);</span><br><span class="line">        &#125;</span><br><span class="line">        dp[n][m - <span class="number">1</span>] = dp[n - <span class="number">1</span>][m] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = m - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">                dp[i][j] = Math.max(<span class="number">1</span>, Math.min(dp[i + <span class="number">1</span>][j], dp[i][j + <span class="number">1</span>]) - dungeon[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200713103520292.png" alt="image-20200713103520292"></p>
 
       
@@ -521,7 +526,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -543,7 +548,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

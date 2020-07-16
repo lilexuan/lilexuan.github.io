@@ -271,6 +271,313 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/16/Leetcode-785-%E5%88%A4%E6%96%AD%E4%BA%8C%E5%88%86%E5%9B%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kelvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="K-Space">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/16/Leetcode-785-%E5%88%A4%E6%96%AD%E4%BA%8C%E5%88%86%E5%9B%BE/" itemprop="url">Leetcode-785-判断二分图</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-16T10:21:54+08:00">
+                2020-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">Leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
+<p>给定一个无向图graph，当这个图为二分图时返回true。</p>
+<p>如果我们能将一个图的节点集合分割成两个独立的子集A和B，并使图中的每一条边的两个节点一个来自A集合，一个来自B集合，我们就将这个图称为二分图。</p>
+<p>graph将会以邻接表方式给出，graph[i]表示图中与节点i相连的所有节点。每个节点都是一个在0到graph.length-1之间的整数。这图中没有自环和平行边： graph[i] 中不存在i，并且graph[i]中没有重复的值。</p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200716102844735.png" alt="image-20200716102844735"></p>
+<p>注意:</p>
+<p>graph 的长度范围为 [1, 100]。<br>graph[i] 中的元素的范围为 [0, graph.length - 1]。<br>graph[i] 不会包含 i 或者有重复的值。<br>图是无向的: 如果j 在 graph[i]里边, 那么 i 也会在 graph[j]里边。</p>
+</blockquote>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>对图中的节点进行染色. 以任意一个节点开始, 将其染成红色, 然后对图进行遍历, 将其邻居染成黑色. 然后将黑色的邻居染成红色. 如果可以染色成功, 说明这个图是二分图, 两个集合分别是黑色节点和红色节点. 如果染色不能成功, 说明该图不是二分图.</p>
+<p>遍历图的思路主要有两种, 分别是深度优先搜索DFS和广度优先搜索BFS. </p>
+<h1 id="深度优先搜索DFS"><a href="#深度优先搜索DFS" class="headerlink" title="深度优先搜索DFS"></a>深度优先搜索DFS</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 染色的标记</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> UNCOLOR = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> RED = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> BLACK = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 标记节点是否染色</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] colorFlag;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 是否符合题目要求</span></span><br><span class="line">    <span class="keyword">boolean</span> valid = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBipartite</span><span class="params">(<span class="keyword">int</span>[][] graph)</span> </span>&#123;</span><br><span class="line">        colorFlag = <span class="keyword">new</span> <span class="keyword">int</span>[graph.length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; graph.length; i++) &#123;</span><br><span class="line">            <span class="comment">// 因为图不一定是连通的, 所以需要以所有为染色的节点为起点去染色</span></span><br><span class="line">            <span class="keyword">if</span> (colorFlag[i] == UNCOLOR) &#123;</span><br><span class="line">                dfs(i, RED, graph);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> valid;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> node, <span class="keyword">int</span> color, <span class="keyword">int</span>[][] graph)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 对当前节点进行染色</span></span><br><span class="line">        colorFlag[node] = color;</span><br><span class="line">        <span class="comment">// 确定相邻节点需要染的颜色</span></span><br><span class="line">        <span class="keyword">int</span> colorOfNeighbour = color == RED? BLACK: RED;</span><br><span class="line">        <span class="comment">// 遍历相邻的节点</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> neighbour: graph[node]) &#123;</span><br><span class="line">            <span class="keyword">if</span> (colorFlag[neighbour] == UNCOLOR) &#123;</span><br><span class="line">                dfs(neighbour, colorOfNeighbour, graph);</span><br><span class="line">                <span class="comment">// 通过上面的dfs, 如果不是二分图, 则直接返回</span></span><br><span class="line">                <span class="keyword">if</span> (!valid) &#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (colorFlag[neighbour] != colorOfNeighbour) &#123;</span><br><span class="line">                <span class="comment">// 如果相邻节点已经有颜色, 而且和确定要染的颜色不一样的话, 则说明不是二分图</span></span><br><span class="line">                <span class="comment">// 不满足题目要求</span></span><br><span class="line">                valid = <span class="keyword">false</span>;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200716103505511.png" alt="image-20200716103505511"></p>
+<h1 id="广度优先搜索BFS"><a href="#广度优先搜索BFS" class="headerlink" title="广度优先搜索BFS"></a>广度优先搜索BFS</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 染色的标记</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> UNCOLOR = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> RED = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> BLACK = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 标记节点是否染色</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] colorFlag;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBipartite</span><span class="params">(<span class="keyword">int</span>[][] graph)</span> </span>&#123;</span><br><span class="line">        colorFlag = <span class="keyword">new</span> <span class="keyword">int</span>[graph.length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; graph.length; i++) &#123;</span><br><span class="line">            <span class="comment">// 因为图不一定是连通的, 所以需要以所有为染色的节点为起点去染色</span></span><br><span class="line">            <span class="keyword">if</span> (colorFlag[i] == UNCOLOR) &#123;</span><br><span class="line">                Queue&lt;Integer&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">                <span class="comment">// 先将第一个节点入队</span></span><br><span class="line">                queue.offer(i);</span><br><span class="line">                colorFlag[i] = RED;</span><br><span class="line">                <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">                    <span class="comment">// 队首节点出队</span></span><br><span class="line">                    <span class="keyword">int</span> node = queue.poll();</span><br><span class="line">                    <span class="comment">// 确认出队节点的相邻节点需要染的颜色</span></span><br><span class="line">                    <span class="keyword">int</span> colorOfNeighbour = colorFlag[node] == RED? BLACK: RED;</span><br><span class="line">                    <span class="comment">// 遍历出队节点的所有相邻节点</span></span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> neighbour: graph[node]) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (colorFlag[neighbour] == UNCOLOR) &#123;</span><br><span class="line">                            <span class="comment">// 如果当前相邻节点还没有染色</span></span><br><span class="line">                            <span class="comment">// 入队</span></span><br><span class="line">                            queue.offer(neighbour);</span><br><span class="line">                            <span class="comment">// 染色</span></span><br><span class="line">                            colorFlag[neighbour] = colorOfNeighbour;</span><br><span class="line">                        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (colorFlag[neighbour] != colorOfNeighbour) &#123;</span><br><span class="line">                            <span class="comment">// 如果当前相邻节点已染色, 且与需要染的颜色不一样</span></span><br><span class="line">                            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200716105628992.png" alt="image-20200716105628992"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/15/Leetcode-96-%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kelvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="K-Space">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/15/Leetcode-96-%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" itemprop="url">Leetcode-96-不同的二叉搜索树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-15T16:17:48+08:00">
+                2020-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">Leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
+<p>给定一个整数 <em>n</em>，求以 1 … <em>n</em> 为节点组成的二叉搜索树有多少种？</p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200715161855733.png" alt="image-20200715161855733"></p>
+</blockquote>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>对于有序序列<code>1...n</code>, 假设以数字<code>j</code>为根, 那么构造搜索二叉树的时候, 序列<code>1...(j-1)</code>为左子树的元素, 序列<code>(j+1)..n</code>则为右子树的元素.</p>
+<p>假设<code>dp[j]</code>为长度为<code>j</code>的序列所能组成的二叉搜索树数目.</p>
+<p>那么由图可知, 假设<code>i</code>为序列的总长度, 则有<code>dp[j]=dp[j-1]*dp[i-j]</code></p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200715163040993.png" alt="image-20200715163040993"></p>
+<p>对于长度为<code>i</code>的序列, 进行<code>j=1..i</code>的遍历, 累计构造出来的子树的数量即可. 代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numTrees</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++) &#123;</span><br><span class="line">                dp[i] += dp[j - <span class="number">1</span>] * dp[i - j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200715163222316.png" alt="image-20200715163222316"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/14/Leetcode-120-%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -372,12 +679,13 @@
 <p>自顶向下的最小路径和为 <code>11</code>（即，<strong>2</strong> + <strong>3</strong> + <strong>5</strong> + <strong>1</strong> = 11）。</p>
 </blockquote>
 <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>假设<code>dp[i][j]</code>是处于位置<code>(i, j)</code>时的最小路径总和.</p>
-<p>由于位置<code>(i, j)</code>只能从位置<code>(i-1,j-1)</code>和位置<code>(i-1, j)</code>过来, 那么可以很容易的知道动态转移方程为:<br>$$<br>dp[i][j]=min(dp[i-1][j-1], dp[i-1][j])+triange[i][j]<br>$$<br><strong><code>dp</code>初始化</strong></p>
+<p>由于位置<code>(i, j)</code>只能从位置<code>(i-1,j-1)</code>和位置<code>(i-1, j)</code>过来, 那么可以很容易的知道动态转移方程为:</p>
+<script type="math/tex; mode=display">
+dp[i][j]=min(dp[i-1][j-1], dp[i-1][j])+triange[i][j]</script><p><strong><code>dp</code>初始化</strong></p>
 <p>对<code>dp</code>所有元素初始赋值为<code>Integer.MAX_VALUE</code>, 方便进行比较最小值.</p>
 <p>需要注意的是, <code>dp[i][0]</code>只能从上方转移, 所以初始化的时候需要另外处理.</p>
 <p>代码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minimumTotal</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; triangle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = triangle.size();</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n][n];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// dp初始化</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            Arrays.fill(dp[i], Integer.MAX_VALUE);</span><br><span class="line">        &#125;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = triangle.get(<span class="number">0</span>).get(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = triangle.get(i).get(<span class="number">0</span>) + dp[i - <span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++) &#123;</span><br><span class="line">                dp[i][j] = Math.min(dp[i - <span class="number">1</span>][j - <span class="number">1</span>], dp[i - <span class="number">1</span>][j]) + triangle.get(i).get(j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (dp[n - <span class="number">1</span>][j] &lt; min) &#123;</span><br><span class="line">                min = dp[n - <span class="number">1</span>][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// for (int i = 0; i &lt; n; i++) &#123;</span></span><br><span class="line">        <span class="comment">//     System.out.println(Arrays.toString(dp[i]));</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="keyword">return</span> min;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200714105910433.png" alt="image-20200714105910433"></p>
 
           
@@ -531,7 +839,6 @@
 <p>然后遍历另外一个数组, 查看元素是否在哈希表中. 如果在, 则将其 添加到结果数组中, 并且更新哈希表中的值.</p>
 <p>代码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] intersect(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums1.length &gt; nums2.length) &#123;</span><br><span class="line">            <span class="keyword">int</span>[] tmp = nums1;</span><br><span class="line">            nums1 = nums2;</span><br><span class="line">            nums2 = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; hashMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums1) &#123;</span><br><span class="line">            <span class="keyword">int</span> cnt = hashMap.getOrDefault(num, <span class="number">0</span>) + <span class="number">1</span>;</span><br><span class="line">            hashMap.put(num, cnt);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[nums1.length];</span><br><span class="line">        <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums2) &#123;</span><br><span class="line">            <span class="keyword">int</span> cnt = hashMap.getOrDefault(num, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">if</span> (cnt &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                res[len++] = num;</span><br><span class="line">                cnt--;</span><br><span class="line">                <span class="keyword">if</span> (cnt &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    hashMap.put(num, cnt);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    hashMap.remove(num);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Arrays.copyOfRange(res, <span class="number">0</span>, len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200713101027073.png" alt="image-20200713101027073"></p>
 
           
@@ -681,6 +988,7 @@
 <p>为了尽快到达公主，骑士决定每次只向右或向下移动一步。</p>
 <p><strong>编写一个函数来计算确保骑士能够拯救到公主所需的最低初始健康点数。</strong></p>
 <p>例如，考虑到如下布局的地下城，如果骑士遵循最佳路径 <code>右 -&gt; 右 -&gt; 下 -&gt; 下</code>，则骑士的初始健康点数至少为 <strong>7</strong>。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -689,7 +997,8 @@
 <th>3</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-5</td>
 <td>-10</td>
 <td>1</td>
@@ -699,7 +1008,9 @@
 <td>30</td>
 <td>-5 (P)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>说明:</strong></p>
 <ul>
 <li>骑士的健康点数没有上限。</li>
@@ -708,10 +1019,11 @@
 </blockquote>
 <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>此处需要按照<strong>从右下角到左上角</strong>的顺序进行动态规划.</p>
 <p>假设<code>dp[i][j]</code>为在位置<code>(i, j)</code>到终点所需要的最小起始生命值. 假设<code>dp[i+1][j]</code>和<code>dp[i][j+1]</code>是已知的, 那么<code>dp[i][j]</code>应该等于<code>dp[i+1][j]</code>和<code>dp[i][j+1]</code>的最小值, 再减去当前位置所要消耗的生命值<code>dungeon(i,j)</code>, 并且要注意, 初始生命值应该是大于等于1的. </p>
-<p>根据上述描述可知, 动态转移方程为<br>$$<br>dp[i][j]=max(min(dp[i+1][j], dp[i][j+1])-deungen(i, j), 1)<br>$$<br>对于边界条件, 需要对<code>dp[n][m-1]</code>和<code>dp[n-1][m]</code>设置为1, 而<code>dp</code>其他位置则需要设置为<code>Integer.MAX_VALUE</code>.</p>
+<p>根据上述描述可知, 动态转移方程为</p>
+<script type="math/tex; mode=display">
+dp[i][j]=max(min(dp[i+1][j], dp[i][j+1])-deungen(i, j), 1)</script><p>对于边界条件, 需要对<code>dp[n][m-1]</code>和<code>dp[n-1][m]</code>设置为1, 而<code>dp</code>其他位置则需要设置为<code>Integer.MAX_VALUE</code>.</p>
 <p>代码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculateMinimumHP</span><span class="params">(<span class="keyword">int</span>[][] dungeon)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = dungeon.length, m = dungeon[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> dp[][] = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>][m + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            Arrays.fill(dp[i], Integer.MAX_VALUE);</span><br><span class="line">        &#125;</span><br><span class="line">        dp[n][m - <span class="number">1</span>] = dp[n - <span class="number">1</span>][m] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = m - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">                dp[i][j] = Math.max(<span class="number">1</span>, Math.min(dp[i + <span class="number">1</span>][j], dp[i][j + <span class="number">1</span>]) - dungeon[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200713103520292.png" alt="image-20200713103520292"></p>
 
           
@@ -862,8 +1174,7 @@
 </blockquote>
 <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>使用<code>dp[i]</code>来表示第<code>i</code>天<strong>结束</strong>之后的<strong>累计最大收益</strong>. 因为题目中包含了冷冻期的概念, 所以可以用数组的第二维来表示第<code>i</code>天<strong>结束</strong>之后的状态.:</p>
 <ul>
-<li><p>第<code>i</code>天<strong>结束</strong>之后, 持有股票, 对应的<strong>累计最大收益</strong>为<code>dp[i][0]</code></p>
-</li>
+<li>第<code>i</code>天<strong>结束</strong>之后, 持有股票, 对应的<strong>累计最大收益</strong>为<code>dp[i][0]</code></li>
 <li><p>第<code>i</code>天<strong>结束</strong>之后, 不持有股票, 处于<strong>冷冻期</strong>, 对应的<strong>累计最大收益</strong>为<code>dp[i][1]</code></p>
 </li>
 <li><p>第<code>i</code>天<strong>结束</strong>之后, 不持有股票, 不处于<strong>冷冻期</strong>, 对应的<strong>累计最大收益</strong>为<code>dp[i][2]</code></p>
@@ -878,23 +1189,29 @@
 <li>是第<code>i</code>天购买的, 那么说明第<code>i-1</code>天不能持有股票, 且不处于冷冻期, 对应的<strong>累计最大收益</strong>为<code>dp[i-1][2]</code>, 还需要考虑到第<code>i</code>天买了股票, 产生了负收益<code>-prices[i]</code>, 那么该情况下的<strong>累计最大收益</strong>为<code>dp[i-1][2]-prices[i]</code></li>
 <li>是第<code>i-1</code>天时就已经持有(注意, 不是购买)的股票, 那么对应的<strong>累计最大收益</strong>为<code>dp[i-1][0]</code></li>
 </ol>
-<p>第 <code>i</code>天结束后持有股票对应的<strong>累计最大收益</strong>为上述两种情况的较大者, 即<br>$$<br>dp[i][0]=max(dp[i-1][0], f[i-1][2]-prices[i])<br>$$</p>
-</li>
+<p>第 <code>i</code>天结束后持有股票对应的<strong>累计最大收益</strong>为上述两种情况的较大者, 即</p>
+<script type="math/tex; mode=display">
+dp[i][0]=max(dp[i-1][0], f[i-1][2]-prices[i])</script></li>
 <li><p>第<code>i</code>天<strong>结束</strong>之后, 不持有股票, 处于<strong>冷冻期</strong>, 对应的<strong>累计最大收益</strong>为<code>dp[i][1]</code></p>
-<p>第<code>i</code>天结束之后, 不持有股票, 处于冷冻期, 说明了第<code>i</code>天刚卖出了股票, 对应的<strong>累计最大收益</strong>为前一天的<strong>累计最大收益</strong>加上今天卖出股票所获得的收益, 而前一天的<strong>累计最大收益</strong>是持有股票的情况, 即<code>dp[i-1][0]</code>. 总的来说, 就是<br>$$<br>dp[i][1]=prices[i]+dp[i-1][0]<br>$$</p>
-</li>
+<p>第<code>i</code>天结束之后, 不持有股票, 处于冷冻期, 说明了第<code>i</code>天刚卖出了股票, 对应的<strong>累计最大收益</strong>为前一天的<strong>累计最大收益</strong>加上今天卖出股票所获得的收益, 而前一天的<strong>累计最大收益</strong>是持有股票的情况, 即<code>dp[i-1][0]</code>. 总的来说, 就是</p>
+<script type="math/tex; mode=display">
+dp[i][1]=prices[i]+dp[i-1][0]</script></li>
 <li><p>第<code>i</code>天<strong>结束</strong>之后, 不持有股票, 不处于<strong>冷冻期</strong>, 对应的<strong>累计最大收益</strong>为<code>dp[i][2]</code></p>
 <p>第<code>i</code>天结束之后, 不持有股票, 不处于冷冻期, 说明这一天没有进行操作, 也说明了第<code>i-1</code>天没有持有股票:</p>
 <ol>
 <li>如果第<code>i-1</code>天不处于冷冻期, 对应的<strong>累计最大收益</strong>为<code>dp[i-1][1]</code></li>
 <li>如果第<code>i-1</code>天处于冷冻期, 对应的<strong>累计最大收益</strong>为<code>dp[i-1][2]</code></li>
 </ol>
-<p>第<code>i</code>天的<strong>累计最大收益</strong>为<br>$$<br>dp[i][2]=max(dp[i-1][1], dp[i-1][2])<br>$$</p>
-</li>
+<p>第<code>i</code>天的<strong>累计最大收益</strong>为</p>
+<script type="math/tex; mode=display">
+dp[i][2]=max(dp[i-1][1], dp[i-1][2])</script></li>
 </ul>
-<p>最后一天(n-1天)结束之后, <strong>累计最大收益</strong>为三种状态下的最大值.<br>$$<br>max(dp[n-1][0], dp[n-1][1], dp[n-1][2])<br>$$<br>然而比较<code>dp[n-1][0]</code>是没有意义的, 因为这说明最后一天结束的时候还持有股票. 也就是只要比较后面两种状态就可以了:<br>$$<br>max(dp[n-1][1], dp[n-1][2])<br>$$<br>代码如下:</p>
+<p>最后一天(n-1天)结束之后, <strong>累计最大收益</strong>为三种状态下的最大值.</p>
+<script type="math/tex; mode=display">
+max(dp[n-1][0], dp[n-1][1], dp[n-1][2])</script><p>然而比较<code>dp[n-1][0]</code>是没有意义的, 因为这说明最后一天结束的时候还持有股票. 也就是只要比较后面两种状态就可以了:</p>
+<script type="math/tex; mode=display">
+max(dp[n-1][1], dp[n-1][2])</script><p>代码如下:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (prices.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[prices.length][<span class="number">3</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = -prices[<span class="number">0</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">2</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = Math.max(dp[i - <span class="number">1</span>][<span class="number">0</span>], dp[i - <span class="number">1</span>][<span class="number">2</span>] - prices[i]);</span><br><span class="line">            dp[i][<span class="number">1</span>] = dp[i - <span class="number">1</span>][<span class="number">0</span>] + prices[i];</span><br><span class="line">            dp[i][<span class="number">2</span>] = Math.max(dp[i - <span class="number">1</span>][<span class="number">1</span>], dp[i - <span class="number">1</span>][<span class="number">2</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(dp[prices.length - <span class="number">1</span>][<span class="number">1</span>], dp[prices.length - <span class="number">1</span>][<span class="number">2</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200710104014511.png" alt="image-20200710104014511"></p>
 
           
@@ -1067,7 +1384,6 @@
 <p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707103723429.png" alt="image-20200707103723429"></p>
 <h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><p>代码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numSubmat</span><span class="params">(<span class="keyword">int</span>[][] mat)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = mat.length, n = mat[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// dp初始化</span></span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = mat[i][<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 遍历每一个元素, 计算矩阵个数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">                <span class="comment">// mat[i][j]为0时, dp[i][j]直接置零, 说明在此位置没有连续1</span></span><br><span class="line">                <span class="keyword">if</span> (mat[i][j] == <span class="number">0</span>) &#123;</span><br><span class="line">                    dp[i][j] = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">                <span class="keyword">if</span> (j &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    dp[i][j] = dp[i][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = i; k &gt;= <span class="number">0</span>; k--) &#123;</span><br><span class="line">                    min = Math.min(min, dp[k][j]);</span><br><span class="line">                    sum += min;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707103759951.png" alt="image-20200707103759951"></p>
 
           
@@ -1230,7 +1546,6 @@
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>乍一看这题目很复杂, 但是其实只要转换一下思路, 不区分具体的蚂蚁, 其实碰撞之后掉头和直接穿过去的结果是一样的. 那么问题就变成了求最晚落地的蚂蚁所需要的时间. 也就是最晚落地蚂蚁所走过的路径长度.</p>
 <p>代码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLastMoment</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[] left, <span class="keyword">int</span>[] right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> max = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; left.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (left[i] &gt; max) max = left[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; right.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n - right[i] &gt; max) max = n - right[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707084531723.png" alt="image-20200707084531723"></p>
 
           
@@ -1383,7 +1698,6 @@
 <h1 id="分治算法"><a href="#分治算法" class="headerlink" title="分治算法"></a>分治算法</h1><p>很简单, 直接左右子树进行判断, 然后对布尔量求逻辑或即可. 注意边界条件, 在<code>root==null</code>的时候, 说明没有该路径, 返回<code>false</code>.</p>
 <p>代码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPathSum</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (sum - root.val == <span class="number">0</span> &amp;&amp; root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707083332173.png" alt="image-20200707083332173"></p>
 
           
@@ -1541,352 +1855,14 @@
 </ol>
 </blockquote>
 <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>本题就是经典的动态规划题目. </p>
-<p>使用<code>dp[i][j]</code>来表示到达<code>obstacleGrid[i][j]</code>时的路径数. 明显<code>dp[i][j]</code>的路径数目等于左边<code>dp[i][j-1]</code>的路径数目加上上面<code>dp[i-1][j]</code>的路径数目. 即动态转移方程为<br>$$<br>dp[i][j]=dp[i][j-1]+dp[i-1][j]<br>$$<br>初始化时, 需要将<code>dp[0][0]</code>设置为1.</p>
+<p>使用<code>dp[i][j]</code>来表示到达<code>obstacleGrid[i][j]</code>时的路径数. 明显<code>dp[i][j]</code>的路径数目等于左边<code>dp[i][j-1]</code>的路径数目加上上面<code>dp[i-1][j]</code>的路径数目. 即动态转移方程为</p>
+<script type="math/tex; mode=display">
+dp[i][j]=dp[i][j-1]+dp[i-1][j]</script><p>初始化时, 需要将<code>dp[0][0]</code>设置为1.</p>
 <p>在遍历的过程中如果遇到<code>obstacleGrid[i][j]==1</code>, 说明遇到了障碍, 对应的<code>dp[i][j]</code>需要置为0, 表示此处已经没有路径了.</p>
 <p>代码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniquePathsWithObstacles</span><span class="params">(<span class="keyword">int</span>[][] obstacleGrid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = obstacleGrid.length, n = obstacleGrid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (obstacleGrid[i][j] == <span class="number">1</span>) &#123;</span><br><span class="line">                    dp[i][j] = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (i - <span class="number">1</span> &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    dp[i][j] += dp[i - <span class="number">1</span>][j];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (j - <span class="number">1</span> &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    dp[i][j] += dp[i][j - <span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[m -<span class="number">1</span>][n - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200706090435697.png" alt="image-20200706090435697"></p>
 <p>需要注意的地方是, Leetcode的测试用例中, 包含了在入口和出口设置障碍的情况. 但是上述代码中, 当<code>obstacleGrid[i][j]==1</code>时, 将<code>dp[i][j]</code>设置为0, 则可以避开这个问题.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/05/Leetcode-44-%E9%80%9A%E9%85%8D%E7%AC%A6%E5%8C%B9%E9%85%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kelvin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="K-Space">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/05/Leetcode-44-%E9%80%9A%E9%85%8D%E7%AC%A6%E5%8C%B9%E9%85%8D/" itemprop="url">Leetcode-44-通配符匹配</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-05T12:41:53+08:00">
-                2020-07-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">Leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
-<p>给定一个字符串 (s) 和一个字符模式 (p) ，实现一个支持 ‘?’ 和 ‘*’ 的通配符匹配。</p>
-<p>‘?’ 可以匹配任何单个字符。<br>‘*’ 可以匹配任意字符串（包括空字符串）。<br>两个字符串完全匹配才算匹配成功。</p>
-<p>说明:</p>
-<p>s 可能为空，且只包含从 a-z 的小写字母。<br>p 可能为空，且只包含从 a-z 的小写字母，以及字符 ? 和 *。<br>示例 1:</p>
-<p>输入:<br>s = “aa”<br>p = “a”<br>输出: false<br>解释: “a” 无法匹配 “aa” 整个字符串。<br>示例 2:</p>
-<p>输入:<br>s = “aa”<br>p = “*”<br>输出: true<br>解释: ‘*’ 可以匹配任意字符串。<br>示例 3:</p>
-<p>输入:<br>s = “cb”<br>p = “?a”<br>输出: false<br>解释: ‘?’ 可以匹配 ‘c’, 但第二个 ‘a’ 无法匹配 ‘b’。<br>示例 4:</p>
-<p>输入:<br>s = “adceb”<br>p = “<em>a</em>b”<br>输出: true<br>解释: 第一个 ‘<em>‘ 可以匹配空字符串, 第二个 ‘</em>‘ 可以匹配字符串 “dce”.<br>示例 5:</p>
-<p>输入:<br>s = “acdcb”<br>p = “a*c?b”<br>输出: false</p>
-</blockquote>
-<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>可以用动态规划的思想来解决此题.</p>
-<p>假设<code>dp[i][j]</code>表示字符串<code>s</code>的前<code>i</code>个字符和模式<code>p</code>的前<code>j</code>个字符能否匹配.</p>
-<p>那么就有:</p>
-<ol>
-<li><p>若<code>p[j]</code>是<code>*</code>, 说明模式<code>p</code>对字符串没有任何要求, 若<code>*</code>匹配的是空字符串, 则说明当前<code>dp[i][j]</code>依赖于<code>dp[i][j-1]</code>. 如果<code>*</code>匹配的不是空字符串, 那么<code>dp[i][j]</code>则依赖于<code>dp[i-1][j]</code>. 即转移方程为:<br>$$<br>dp[i][j]=dp[i][j-1]\ ||\ dp[i-1][j]<br>$$</p>
-</li>
-<li><p>若<code>p[j]</code>是<code>?</code>, 说明模式<code>p</code>可以匹配任何一个字符, 当前字符匹配的结果取决于前一个字符匹配的结果. 动态转移方程为:<br>$$<br>dp[i][j]=dp[i-1][j-1]<br>$$</p>
-</li>
-<li><p>若<code>p[j]</code>是小写字母(最后剩下的情况), 那么<code>s[i]</code>和<code>p[j]</code>必须是相同的字母, 动态转移方程为:<br>$$<br>dp[i][j]=(s[i]==s[j])\ and\ dp[i-1][j-1]<br>$$</p>
-</li>
-</ol>
-<p>接下来看一下<code>dp</code>数组的边界情况.</p>
-<ol>
-<li>当<code>i=j=0</code>时, 用空模式去匹配空字符串, 结果必然为真, 即<code>dp[0][0]=true</code></li>
-<li>当<code>j=0</code>, <code>i!=0</code>时, 用空模式去匹配非空字符串, 结果必然为假, 即<code>dp[i][0]=false</code></li>
-<li>当<code>i=0</code>, <code>j!=0</code>时, 用模式去匹配空字符串, 此时只有模式在<code>j</code>之前都为<code>*</code>才为真.</li>
-</ol>
-<p>具体代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMatch</span><span class="params">(String s, String p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = s.length(), n = p.length();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 初始化dp</span></span><br><span class="line">        <span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[m + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p.charAt(j - <span class="number">1</span>) == <span class="string">'*'</span>) &#123;</span><br><span class="line">                dp[<span class="number">0</span>][j] = <span class="keyword">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// dp迭代</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (p.charAt(j - <span class="number">1</span>) == <span class="string">'*'</span>) &#123;</span><br><span class="line">                    dp[i][j] = dp[i - <span class="number">1</span>][j] || dp[i][j - <span class="number">1</span>];</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p.charAt(j - <span class="number">1</span>) == <span class="string">'?'</span>) &#123;</span><br><span class="line">                    dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    dp[i][j] = (s.charAt(i - <span class="number">1</span>) == p.charAt(j - <span class="number">1</span>)) &amp;&amp; dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/4JAkoUdcKaSI6tx.png" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/04/Leetcode-32-%E6%9C%80%E9%95%BF%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kelvin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="K-Space">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/04/Leetcode-32-%E6%9C%80%E9%95%BF%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7/" itemprop="url">Leetcode-32-最长有效括号</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-04T10:33:34+08:00">
-                2020-07-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">Leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
-<p>给定一个只包含 ‘(‘ 和 ‘)’ 的字符串，找出最长的包含有效括号的子串的长度。</p>
-<p>示例 1:</p>
-<p>输入: “(()”<br>输出: 2<br>解释: 最长有效括号子串为 “()”<br>示例 2:</p>
-<p>输入: “)()())”<br>输出: 4<br>解释: 最长有效括号子串为 “()()”</p>
-</blockquote>
-<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>对于括号匹配问题, 最经典的处理方法是使用栈.</p>
-<p>遍历字符串:</p>
-<ul>
-<li>遇到<code>(</code>时, 将其下标入栈</li>
-<li>遇到<code>)</code>时, 说明括号匹配正常. 出栈并计算当前下标能够成的有效括号子串.</li>
-</ul>
-<p>问题就在于如何计算出栈时的最长有效括号字串.</p>
-<p>我们可以先将<code>-1</code>置于栈底. </p>
-<ul>
-<li>如果出栈之后栈底不为空, 则将当前的下标减去栈顶, 就是当前的有效括号子串.</li>
-<li>如果出栈之后栈底为空, 那么将当前下标(必为右括号<code>)</code>的下标) 放入栈底即可.</li>
-</ul>
-<p>过程如图所示</p>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/NWdLGFHexnODJ6T.png" alt=""></p>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/%E5%B9%BB%E7%81%AF%E7%89%872.PNG" alt=""></p>
-<p>代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestValidParentheses</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        LinkedList&lt;Integer&gt; stack = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        stack.push(-<span class="number">1</span>); </span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">'('</span>) &#123;</span><br><span class="line">                stack.push(i);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">                <span class="keyword">if</span> (stack.isEmpty()) &#123;</span><br><span class="line">                    stack.push(i);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    res = Math.max(res, i - stack.peek());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/20200704112142.png" alt=""></p>
 
           
         
@@ -1972,7 +1948,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1994,7 +1970,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
