@@ -305,6 +305,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/20/Leetcode-220-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%E2%85%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kelvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="K-Space">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/20/Leetcode-220-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%E2%85%A2/" itemprop="url">Leetcode-220-存在重复元素Ⅲ</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-20T17:58:47+08:00">
+                2020-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">Leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
+<p>在整数数组 nums 中，是否存在两个下标 i 和 j，使得 nums [i] 和 nums [j] 的差的绝对值小于等于 t ，且满足 i 和 j 的差的绝对值也小于等于 ķ 。</p>
+<p>如果存在则返回 true，不存在返回 false。</p>
+<p>示例 1:</p>
+<blockquote>
+<p>输入: nums = [1,2,3,1], k = 3, t = 0<br>输出: true</p>
+</blockquote>
+<p>示例 2:</p>
+<blockquote>
+<p>输入: nums = [1,0,1,1], k = 1, t = 2<br>输出: true</p>
+</blockquote>
+<p>示例 3:</p>
+<blockquote>
+<p>输入: nums = [1,5,9,1,5,9], k = 2, t = 3<br>输出: false</p>
+</blockquote>
+</blockquote>
+<h1 id="平衡二叉树-红黑树"><a href="#平衡二叉树-红黑树" class="headerlink" title="平衡二叉树/红黑树"></a>平衡二叉树/红黑树</h1><p><code>Java</code>中的<code>Treeset</code>内部是由红黑树实现的. <code>Treeset.ceiling</code>函数可以寻找特定节点的中序后继, <code>Treeset.floor</code>函数可以寻找特定节点的中序前驱.</p>
+<ul>
+<li>初始化一颗空的红黑树<code>tree</code></li>
+<li>遍历整个数组, 对于每一个元素<code>nums[i]</code>:<ul>
+<li>在<code>tree</code>上查找<code>nums[i]</code>的后继<code>s</code>(大于等于<code>nums[i]</code>的最小的数), 如果<code>s-nums[i]&lt;=t</code>, 则返回<code>true</code></li>
+<li>在<code>tree</code>上查找<code>nums[i]</code>的前驱<code>g</code>(小于等于<code>nums[i]</code>的最大的数), 如果<code>nums[i] - g&lt;=t</code>, 则返回<code>true</code></li>
+<li>在<code>tree</code>中插入<code>nums[i]</code></li>
+<li>如果<code>tree</code>的大小超过了<code>k</code>, 则移除最早加入<code>tree</code>的那个数(<code>nums[i-k]</code>)</li>
+</ul>
+</li>
+</ul>
+<p>代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsNearbyAlmostDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">        TreeSet&lt;Integer&gt; tree = <span class="keyword">new</span> TreeSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            Integer s = tree.ceiling(nums[i]); <span class="comment">// 寻找当前元素的后继</span></span><br><span class="line">            Integer g = tree.floor(nums[i]);  <span class="comment">// 寻找当前元素的前驱</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (s != <span class="keyword">null</span> &amp;&amp; s &lt;= t + nums[i]) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (g != <span class="keyword">null</span> &amp;&amp; nums[i] &lt;= t + g) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            </span><br><span class="line">            tree.add(nums[i]);</span><br><span class="line">            <span class="keyword">if</span> (tree.size() &gt; k) &#123;</span><br><span class="line">                tree.remove(nums[i - k]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200720181700539.png" alt="image-20200720181700539"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/20/Leetcode-167-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E2%85%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1771,168 +1943,6 @@ max(dp[n-1][1], dp[n-1][2])</script><p>代码如下:</p>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/07/Leetcode-1503-%E6%89%80%E6%9C%89%E8%9A%82%E8%9A%81%E6%8E%89%E4%B8%8B%E6%9D%A5%E5%89%8D%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E5%88%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kelvin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="K-Space">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/07/Leetcode-1503-%E6%89%80%E6%9C%89%E8%9A%82%E8%9A%81%E6%8E%89%E4%B8%8B%E6%9D%A5%E5%89%8D%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E5%88%BB/" itemprop="url">Leetcode-1503-所有蚂蚁掉下来前的最后一刻</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-07T08:34:46+08:00">
-                2020-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">Leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>有一块木板，长度为 n 个 单位 。一些蚂蚁在木板上移动，每只蚂蚁都以 每秒一个单位 的速度移动。其中，一部分蚂蚁向 左 移动，其他蚂蚁向 右 移动。</p>
-<p>当两只向 不同 方向移动的蚂蚁在某个点相遇时，它们会同时改变移动方向并继续移动。假设更改方向不会花费任何额外时间。</p>
-<p>而当蚂蚁在某一时刻 t 到达木板的一端时，它立即从木板上掉下来。</p>
-<p>给你一个整数 n 和两个整数数组 left 以及 right 。两个数组分别标识向左或者向右移动的蚂蚁在 t = 0 时的位置。请你返回最后一只蚂蚁从木板上掉下来的时刻。</p>
-<p>示例 1：</p>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/ants.jpg" alt="img"></p>
-<p>输入：n = 4, left = [4,3], right = [0,1]<br>输出：4<br>解释：如上图所示：<br>-下标 0 处的蚂蚁命名为 A 并向右移动。<br>-下标 1 处的蚂蚁命名为 B 并向右移动。<br>-下标 3 处的蚂蚁命名为 C 并向左移动。<br>-下标 4 处的蚂蚁命名为 D 并向左移动。<br>请注意，蚂蚁在木板上的最后时刻是 t = 4 秒，之后蚂蚁立即从木板上掉下来。（也就是说在 t = 4.0000000001 时，木板上没有蚂蚁）。<br>示例 2：</p>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/ants2.jpg" alt="img"></p>
-<p>输入：n = 7, left = [], right = [0,1,2,3,4,5,6,7]<br>输出：7<br>解释：所有蚂蚁都向右移动，下标为 0 的蚂蚁需要 7 秒才能从木板上掉落。<br>示例 3：</p>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/ants3.jpg" alt="img"></p>
-<p>输入：n = 7, left = [0,1,2,3,4,5,6,7], right = []<br>输出：7<br>解释：所有蚂蚁都向左移动，下标为 7 的蚂蚁需要 7 秒才能从木板上掉落。<br>示例 4：</p>
-<p>输入：n = 9, left = [5], right = [4]<br>输出：5<br>解释：t = 1 秒时，两只蚂蚁将回到初始位置，但移动方向与之前相反。<br>示例 5：</p>
-<p>输入：n = 6, left = [6], right = [0]<br>输出：6</p>
-<p>提示：</p>
-<p>1 &lt;= n &lt;= 10^4<br>0 &lt;= left.length &lt;= n + 1<br>0 &lt;= left[i] &lt;= n<br>0 &lt;= right.length &lt;= n + 1<br>0 &lt;= right[i] &lt;= n<br>1 &lt;= left.length + right.length &lt;= n + 1<br>left 和 right 中的所有值都是唯一的，并且每个值 只能出现在二者之一 中。</p>
-</blockquote>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>乍一看这题目很复杂, 但是其实只要转换一下思路, 不区分具体的蚂蚁, 其实碰撞之后掉头和直接穿过去的结果是一样的. 那么问题就变成了求最晚落地的蚂蚁所需要的时间. 也就是最晚落地蚂蚁所走过的路径长度.</p>
-<p>代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLastMoment</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[] left, <span class="keyword">int</span>[] right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> max = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; left.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (left[i] &gt; max) max = left[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; right.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n - right[i] &gt; max) max = n - right[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707084531723.png" alt="image-20200707084531723"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1983,7 +1993,7 @@ max(dp[n-1][1], dp[n-1][2])</script><p>代码如下:</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2005,7 +2015,7 @@ max(dp[n-1][1], dp[n-1][2])</script><p>代码如下:</p>
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
