@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="二叉搜索树,递归," />
+  <meta name="keywords" content="双指针," />
 
 
 
@@ -94,22 +94,19 @@
 
 
 
-<meta name="description" content="题目 给定二叉搜索树的根结点 root，返回 L 和 R（含）之间的所有结点的值的和。 二叉搜索树保证具有唯一的值。 示例 1： 输入：root &#x3D; [10,5,15,3,7,null,18], L &#x3D; 7, R &#x3D; 15输出：32 示例 2： 输入：root &#x3D; [10,5,15,3,7,13,18,1,null,6], L &#x3D; 6, R &#x3D; 10输出：23 提示：  树中的结点数量最多为 10">
+<meta name="description" content="题目 给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。 函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。 说明: 返回的下标值（index1 和 index2）不是从零开始的。你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。 示例:  输入: numbers &#x3D; [2, 7, 11, 15], ta">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-938 二叉搜索树的范围和">
-<meta property="og:url" content="http://llx42.com/2020/05/06/Leetocde-938-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/index.html">
+<meta property="og:title" content="Leetcode-167-两数之和Ⅱ">
+<meta property="og:url" content="http://llx42.com/2020/07/20/Leetcode-167-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E2%85%A1/index.html">
 <meta property="og:site_name" content="K-Space">
-<meta property="og:description" content="题目 给定二叉搜索树的根结点 root，返回 L 和 R（含）之间的所有结点的值的和。 二叉搜索树保证具有唯一的值。 示例 1： 输入：root &#x3D; [10,5,15,3,7,null,18], L &#x3D; 7, R &#x3D; 15输出：32 示例 2： 输入：root &#x3D; [10,5,15,3,7,13,18,1,null,6], L &#x3D; 6, R &#x3D; 10输出：23 提示：  树中的结点数量最多为 10">
-<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/W8KDpkYQM1ATrXH.png">
-<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/sw9UMih4AOCaPDS.png">
-<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/JnMYbjp34PxI7Ev.png">
-<meta property="article:published_time" content="2020-05-06T02:11:40.000Z">
-<meta property="article:modified_time" content="2020-07-06T07:41:29.734Z">
+<meta property="og:description" content="题目 给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。 函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。 说明: 返回的下标值（index1 和 index2）不是从零开始的。你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。 示例:  输入: numbers &#x3D; [2, 7, 11, 15], ta">
+<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200720083246426.png">
+<meta property="article:published_time" content="2020-07-20T00:24:43.000Z">
+<meta property="article:modified_time" content="2020-07-20T00:34:25.475Z">
 <meta property="article:author" content="Kelvin">
-<meta property="article:tag" content="二叉搜索树">
-<meta property="article:tag" content="递归">
+<meta property="article:tag" content="双指针">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/W8KDpkYQM1ATrXH.png">
+<meta name="twitter:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200720083246426.png">
 
 
 
@@ -138,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://llx42.com/2020/05/06/Leetocde-938-二叉搜索树的范围和/"/>
+  <link rel="canonical" href="http://llx42.com/2020/07/20/Leetcode-167-两数之和Ⅱ/"/>
 
 
 
 
 
-  <title>Leetcode-938 二叉搜索树的范围和 | K-Space</title>
+  <title>Leetcode-167-两数之和Ⅱ | K-Space</title>
   
 
 
@@ -311,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/05/06/Leetocde-938-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/">
+    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/20/Leetcode-167-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E2%85%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kelvin">
@@ -328,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode-938 二叉搜索树的范围和</h1>
+          <h1 class="post-title" itemprop="name headline">Leetcode-167-两数之和Ⅱ</h1>
         
 
         <div class="post-meta">
@@ -340,8 +337,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-06T10:11:40+08:00">
-                2020-05-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-20T08:24:43+08:00">
+                2020-07-20
               </time>
             
 
@@ -401,34 +398,26 @@
 
       
         <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
-<p>给定二叉搜索树的根结点 root，返回 L 和 R（含）之间的所有结点的值的和。</p>
-<p>二叉搜索树保证具有唯一的值。</p>
-<p><strong>示例 1：</strong></p>
-<p><strong>输入：</strong>root = [10,5,15,3,7,null,18], L = 7, R = 15<br><strong>输出：</strong>32</p>
-<p><strong>示例 2：</strong></p>
-<p><strong>输入：</strong>root = [10,5,15,3,7,13,18,1,null,6], L = 6, R = 10<br><strong>输出：</strong>23</p>
-<p><strong>提示：</strong></p>
-<ol>
-<li>树中的结点数量最多为 10000 个。</li>
-<li>最终的答案保证小于 2^31。</li>
-</ol>
+<p>给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。</p>
+<p>函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。</p>
+<p>说明:</p>
+<p>返回的下标值（index1 和 index2）不是从零开始的。<br>你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。</p>
+<p>示例:</p>
+<blockquote>
+<p>输入: numbers = [2, 7, 11, 15], target = 9<br>输出: [1,2]<br>解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。</p>
 </blockquote>
-<h1 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h1><p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/W8KDpkYQM1ATrXH.png" alt=""></p>
-<p>直接遍历整个二叉树, 寻找大于等于L和小于等于R的结点的总和</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rangeSumBST</span><span class="params">(TreeNode root, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cntBSt(root, L, R);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">cntBSt</span><span class="params">(TreeNode root, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> result;</span><br><span class="line">        <span class="keyword">if</span> (root.val &lt; L || root.val &gt; R) result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> result = root.val;</span><br><span class="line">        result += cntBSt(root.left, L, R);</span><br><span class="line">        result += cntBSt(root.right, L, R);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/sw9UMih4AOCaPDS.png" alt=""></p>
-<h1 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h1><p>对上面的方法进行优化, 因为给定的树是二叉搜索树, 所以</p>
-<ul>
-<li>当结点小于L时, 只搜索该结点的右子树(左子树均小于L)</li>
-<li>当结点大于R时, 只搜索该结点的左子树(右子树均大于R)</li>
-</ul>
-<p>换句话说</p>
-<ul>
-<li>只有结点大于L时, 才搜索左子树</li>
-<li>只有结点小于R时, 才搜索右子树</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rangeSumBST</span><span class="params">(TreeNode root, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cntBSt(root, L, R);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">cntBSt</span><span class="params">(TreeNode root, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> result;</span><br><span class="line">        <span class="keyword">if</span> (root.val &lt; L || root.val &gt; R) result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> result = root.val;</span><br><span class="line">        <span class="keyword">if</span> (root.val &gt; L) result += cntBSt(root.left, L, R);  <span class="comment">// val大于L才能进行搜索左子树</span></span><br><span class="line">        <span class="keyword">if</span> (root.val &lt; R) result += cntBSt(root.right, L, R); <span class="comment">// val小于R才能进行搜索右子树</span></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/JnMYbjp34PxI7Ev.png" alt=""></p>
+</blockquote>
+<h1 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h1><p>指针<code>i</code>指向第一个元素, 指针<code>j</code>指向最后一个元素.</p>
+<p>计算两个指针对应元素之和<code>sum</code>:</p>
+<ol>
+<li>如果<code>sum</code>大于<code>target</code>, 则需要减小元素之和, 那么<code>j--</code></li>
+<li>如果<code>sum</code>小于<code>target</code>, 则需要增加元素之和, 那么<code>i++</code></li>
+<li>如果<code>sum</code>等于<code>targe</code>, 则直接返回<code>i+1</code>和<code>j+1</code>(题目要求下标从1开始)</li>
+</ol>
+<p>代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = numbers.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">            <span class="keyword">int</span> sum = numbers[i] + numbers[j];</span><br><span class="line">            <span class="keyword">if</span> (sum &lt; target) i++;</span><br><span class="line">            <span class="keyword">if</span> (sum &gt; target) j--;</span><br><span class="line">            <span class="keyword">if</span> (sum == target) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i + <span class="number">1</span>, j + <span class="number">1</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200720083246426.png" alt="image-20200720083246426"></p>
 
       
     </div>
@@ -446,9 +435,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" rel="tag"># 二叉搜索树</a>
-          
-            <a href="/tags/%E9%80%92%E5%BD%92/" rel="tag"># 递归</a>
+            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag"># 双指针</a>
           
         </div>
       
@@ -461,8 +448,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/01/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" rel="next" title="第一篇文章">
-                <i class="fa fa-chevron-left"></i> 第一篇文章
+              <a href="/2020/07/18/Leetcode-97-%E4%BA%A4%E9%94%99%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="next" title="Leetcode-97-交错字符串">
+                <i class="fa fa-chevron-left"></i> Leetcode-97-交错字符串
               </a>
             
           </div>
@@ -470,10 +457,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/05/06/Leetcode-617-%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="prev" title="Leetcode-617 合并二叉树">
-                Leetcode-617 合并二叉树 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -607,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路一"><span class="nav-number">2.</span> <span class="nav-text">思路一</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路二"><span class="nav-number">3.</span> <span class="nav-text">思路二</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双指针"><span class="nav-number">2.</span> <span class="nav-text">双指针</span></a></li></ol></div>
             
 
           </div>

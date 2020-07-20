@@ -1056,4 +1056,36 @@ s=\max_{i=1..A.length, j=1..B.length}\{s_{ij}\}</script><p>代码如下</p>
         <tag>动态规划</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Leetcode-167-两数之和Ⅱ</title>
+    <url>/2020/07/20/Leetcode-167-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E2%85%A1/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
+<p>给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。</p>
+<p>函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。</p>
+<p>说明:</p>
+<p>返回的下标值（index1 和 index2）不是从零开始的。<br>你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。</p>
+<p>示例:</p>
+<blockquote>
+<p>输入: numbers = [2, 7, 11, 15], target = 9<br>输出: [1,2]<br>解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。</p>
+</blockquote>
+</blockquote>
+<h1 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h1><p>指针<code>i</code>指向第一个元素, 指针<code>j</code>指向最后一个元素.</p>
+<p>计算两个指针对应元素之和<code>sum</code>:</p>
+<ol>
+<li>如果<code>sum</code>大于<code>target</code>, 则需要减小元素之和, 那么<code>j--</code></li>
+<li>如果<code>sum</code>小于<code>target</code>, 则需要增加元素之和, 那么<code>i++</code></li>
+<li>如果<code>sum</code>等于<code>targe</code>, 则直接返回<code>i+1</code>和<code>j+1</code>(题目要求下标从1开始)</li>
+</ol>
+<p>代码如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = numbers.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">            <span class="keyword">int</span> sum = numbers[i] + numbers[j];</span><br><span class="line">            <span class="keyword">if</span> (sum &lt; target) i++;</span><br><span class="line">            <span class="keyword">if</span> (sum &gt; target) j--;</span><br><span class="line">            <span class="keyword">if</span> (sum == target) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i + <span class="number">1</span>, j + <span class="number">1</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200720083246426.png" alt="image-20200720083246426"></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
 </search>
