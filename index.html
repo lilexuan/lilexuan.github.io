@@ -305,6 +305,155 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/21/Leetcode-95-%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%85%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kelvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="K-Space">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/21/Leetcode-95-%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%85%A1/" itemprop="url">Leetcode-95-不同的二叉搜索树Ⅱ</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-21T09:22:43+08:00">
+                2020-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">Leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
+<p>给定一个整数 <em>n</em>，生成所有由 1 … <em>n</em> 为节点所组成的 <strong>二叉搜索树</strong></p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200721092547034.png" alt="image-20200721092547034"></p>
+</blockquote>
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><p>遍历<code>1...n</code>中的所有元素, 以当前元素为根结点. 计算所有可能的左子树和右子树, 并将所有<strong>左子树-右子树</strong>组合拼接到根结点上.</p>
+<p>代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;TreeNode&gt; <span class="title">generateTrees</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;TreeNode&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> generateTrees(<span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;TreeNode&gt; <span class="title">generateTrees</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;TreeNode&gt; roots = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (start &gt; end) &#123;</span><br><span class="line">            roots.add(<span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">return</span> roots;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt;= end; i++) &#123;</span><br><span class="line">            List&lt;TreeNode&gt; leftTrees = generateTrees(start, i - <span class="number">1</span>);  <span class="comment">// 获取所有可能的左子树</span></span><br><span class="line">            List&lt;TreeNode&gt; rightTrees = generateTrees(i + <span class="number">1</span>, end);  <span class="comment">// 获取所有可能的右子树</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 遍历所有左子树和右子树的组合, 拼接到根结点上</span></span><br><span class="line">            <span class="keyword">for</span> (TreeNode leftTree : leftTrees) &#123;</span><br><span class="line">                <span class="keyword">for</span> (TreeNode rightTree : rightTrees) &#123;</span><br><span class="line">                    TreeNode root = <span class="keyword">new</span> TreeNode(i, leftTree, rightTree);</span><br><span class="line">                    roots.add(root);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> roots;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200721092906650.png" alt="image-20200721092906650"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/20/Leetcode-220-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%E2%85%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1771,178 +1920,6 @@ max(dp[n-1][1], dp[n-1][2])</script><p>代码如下:</p>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/07/Leetcode-1504-%E7%BB%9F%E8%AE%A1%E5%85%A81%E5%AD%90%E7%9F%A9%E9%98%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kelvin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="K-Space">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/07/Leetcode-1504-%E7%BB%9F%E8%AE%A1%E5%85%A81%E5%AD%90%E7%9F%A9%E9%98%B5/" itemprop="url">Leetcode-1504-统计全1子矩阵</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-07T09:53:23+08:00">
-                2020-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">Leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
-<p>给你一个只包含 0 和 1 的 rows * columns 矩阵 mat ，请你返回有多少个 子矩形 的元素全部都是 1 。</p>
-<p>示例 1：</p>
-<p>输入：mat = [[1,0,1],<br>            [1,1,0],<br>            [1,1,0]]<br>输出：13<br>解释：<br>有 6 个 1x1 的矩形。<br>有 2 个 1x2 的矩形。<br>有 3 个 2x1 的矩形。<br>有 1 个 2x2 的矩形。<br>有 1 个 3x1 的矩形。<br>矩形数目总共 = 6 + 2 + 3 + 1 + 1 = 13 。<br>示例 2：</p>
-<p>输入：mat = [[0,1,1,0],<br>            [0,1,1,1],<br>            [1,1,1,0]]<br>输出：24<br>解释：<br>有 8 个 1x1 的子矩形。<br>有 5 个 1x2 的子矩形。<br>有 2 个 1x3 的子矩形。<br>有 4 个 2x1 的子矩形。<br>有 2 个 2x2 的子矩形。<br>有 2 个 3x1 的子矩形。<br>有 1 个 3x2 的子矩形。<br>矩形数目总共 = 8 + 5 + 2 + 4 + 2 + 2 + 1 = 24 。<br>示例 3：</p>
-<p>输入：mat = [[1,1,1,1,1,1]]<br>输出：21<br>示例 4：</p>
-<p>输入：mat = [[1,0,1],[0,1,0],[1,0,1]]<br>输出：5</p>
-<p>提示：</p>
-<p>1 &lt;= rows &lt;= 150<br>1 &lt;= columns &lt;= 150<br>0 &lt;= mat[i][j] &lt;= 1</p>
-</blockquote>
-<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="定义dp数组"><a href="#定义dp数组" class="headerlink" title="定义dp数组"></a>定义dp数组</h2><p>用<code>dp[i][j]</code>来表示从<code>mat[i][0]</code>到<code>mat[i][j]</code>最多有多少个连续的<code>1</code>. 动态转移方程为:</p>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707104214289.png" alt="image-20200707104214289"></p>
-<p>而临界值<code>dp[i][0]</code>则等于<code>mat[i][0]</code>.</p>
-<p>比如下面的矩阵中, <code>dp[3][2]=3, dp[2][2]=2, dp[1][2]=3, dp[0][2]=1</code></p>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707101543387.png" alt="image-20200707101543387"></p>
-<h2 id="计算思路"><a href="#计算思路" class="headerlink" title="计算思路"></a>计算思路</h2><p>对于每一个元素<code>mat[i][j]</code>, 我们将其当作一个矩阵的右下角来计算他能组成的矩阵数目.</p>
-<p>比如, 对于元素<code>mat[3][2]</code>, 以其作为矩阵的右下角, 只考虑<strong>最后一行</strong>(从0开始数, 第3行, 下同)所构成的矩阵, 他能构成的矩阵为三个, 如图所示.</p>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707102219981.png" alt="image-20200707102219981"></p>
-<p>然后考虑由<strong>第2, 3行</strong>构成的, 以<code>mat[3][2]</code>为右下角的矩阵, 有两个, 如图所示.</p>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707102407898.png" alt="image-20200707102407898"></p>
-<p>然后考虑由<strong>第1, 2, 3行</strong>构成的, 以<code>mat[3][2]</code>为右下角的矩阵, 也是有两个, 如图所示.</p>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707102615699.png" alt="image-20200707102615699"></p>
-<p>最后, 由<strong>第0, 1, 2, 3行</strong>构成的, 以<code>mat[3][2]</code>为右下角的矩阵, 有一个, 如图所示.</p>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707102709427.png" alt="image-20200707102709427"></p>
-<p>也就是说, 照着以上步骤的对矩阵<code>mat</code>中的每一个元素进行一遍以上的运算, 然后计算矩阵数的总和即可.</p>
-<p>那么, 最后还有一个问题. 以元素<code>mat[i][j]</code>为右下角的矩阵能构成的个数是怎么计算的呢?</p>
-<p>由上面的步骤可以轻松看出来, 对于元素<code>mat[i][j]</code>, 计算<code>k</code>到<code>i</code>行构成的矩阵数目时, 该数目等于<code>dp[k..i][j]</code>的最小值, 也就是连续为1的数量的最小值. 如图所示, 因为最小值为1, 所以可以构建的矩阵个数为1.</p>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707103723429.png" alt="image-20200707103723429"></p>
-<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><p>代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numSubmat</span><span class="params">(<span class="keyword">int</span>[][] mat)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = mat.length, n = mat[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// dp初始化</span></span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = mat[i][<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 遍历每一个元素, 计算矩阵个数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">                <span class="comment">// mat[i][j]为0时, dp[i][j]直接置零, 说明在此位置没有连续1</span></span><br><span class="line">                <span class="keyword">if</span> (mat[i][j] == <span class="number">0</span>) &#123;</span><br><span class="line">                    dp[i][j] = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">                <span class="keyword">if</span> (j &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    dp[i][j] = dp[i][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = i; k &gt;= <span class="number">0</span>; k--) &#123;</span><br><span class="line">                    min = Math.min(min, dp[k][j]);</span><br><span class="line">                    sum += min;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200707103759951.png" alt="image-20200707103759951"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1993,7 +1970,7 @@ max(dp[n-1][1], dp[n-1][2])</script><p>代码如下:</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
