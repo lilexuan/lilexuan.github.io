@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="动态规划," />
+  <meta name="keywords" content="双指针," />
 
 
 
@@ -94,19 +94,20 @@
 
 
 
-<meta name="description" content="题目 给定三个字符串 s1, s2, s3, 验证 s3 是否是由 s1 和 s2 交错组成的。 示例 1: 输入: s1 &#x3D; “aabcc”, s2 &#x3D; “dbbca”, s3 &#x3D; “aadbbcbcac”输出: true示例 2: 输入: s1 &#x3D; “aabcc”, s2 &#x3D; “dbbca”, s3 &#x3D; “aadbbbaccc”输出: false  动态规划要判断s3是否由s1和s2交错而成的">
+<meta name="description" content="题目 给定字符串 s 和 t ，判断 s 是否为 t 的子序列。 你可以认为 s 和 t 中仅包含英文小写字母。字符串 t 可能会很长（长度 ~&#x3D; 500,000），而 s 是个短字符串（长度 &lt;&#x3D;100）。 字符串的一个子序列是原始字符串删除一些（也可以不删除）字符而不改变剩余字符相对位置形成的新字符串。（例如，”ace”是”abcde”的一个子序列，而”aec”不是）。 示例 1:s &#x3D;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-97-交错字符串">
-<meta property="og:url" content="http://llx42.com/2020/07/18/Leetcode-97-%E4%BA%A4%E9%94%99%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
+<meta property="og:title" content="Leetcode-392-判断子序列">
+<meta property="og:url" content="http://llx42.com/2020/07/27/Leetcode-392-%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/index.html">
 <meta property="og:site_name" content="K-Space">
-<meta property="og:description" content="题目 给定三个字符串 s1, s2, s3, 验证 s3 是否是由 s1 和 s2 交错组成的。 示例 1: 输入: s1 &#x3D; “aabcc”, s2 &#x3D; “dbbca”, s3 &#x3D; “aadbbcbcac”输出: true示例 2: 输入: s1 &#x3D; “aabcc”, s2 &#x3D; “dbbca”, s3 &#x3D; “aadbbbaccc”输出: false  动态规划要判断s3是否由s1和s2交错而成的">
-<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200718092411513.png">
-<meta property="article:published_time" content="2020-07-18T01:10:46.000Z">
-<meta property="article:modified_time" content="2020-07-18T01:24:47.047Z">
+<meta property="og:description" content="题目 给定字符串 s 和 t ，判断 s 是否为 t 的子序列。 你可以认为 s 和 t 中仅包含英文小写字母。字符串 t 可能会很长（长度 ~&#x3D; 500,000），而 s 是个短字符串（长度 &lt;&#x3D;100）。 字符串的一个子序列是原始字符串删除一些（也可以不删除）字符而不改变剩余字符相对位置形成的新字符串。（例如，”ace”是”abcde”的一个子序列，而”aec”不是）。 示例 1:s &#x3D;">
+<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/%E5%B9%BB%E7%81%AF%E7%89%871.PNG">
+<meta property="og:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200727131740343.png">
+<meta property="article:published_time" content="2020-07-27T05:05:23.000Z">
+<meta property="article:modified_time" content="2020-07-27T05:18:08.421Z">
 <meta property="article:author" content="Kelvin">
-<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="双指针">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200718092411513.png">
+<meta name="twitter:image" content="https://kpicgo.oss-cn-shanghai.aliyuncs.com/%E5%B9%BB%E7%81%AF%E7%89%871.PNG">
 
 
 
@@ -135,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://llx42.com/2020/07/18/Leetcode-97-交错字符串/"/>
+  <link rel="canonical" href="http://llx42.com/2020/07/27/Leetcode-392-判断子序列/"/>
 
 
 
 
 
-  <title>Leetcode-97-交错字符串 | K-Space</title>
+  <title>Leetcode-392-判断子序列 | K-Space</title>
   
 
 
@@ -308,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/18/Leetcode-97-%E4%BA%A4%E9%94%99%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+    <link itemprop="mainEntityOfPage" href="http://llx42.com/2020/07/27/Leetcode-392-%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kelvin">
@@ -325,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode-97-交错字符串</h1>
+          <h1 class="post-title" itemprop="name headline">Leetcode-392-判断子序列</h1>
         
 
         <div class="post-meta">
@@ -337,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T09:10:46+08:00">
-                2020-07-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-27T13:05:23+08:00">
+                2020-07-27
               </time>
             
 
@@ -398,19 +399,21 @@
 
       
         <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
-<p>给定三个字符串 s1, s2, s3, 验证 s3 是否是由 s1 和 s2 交错组成的。</p>
-<p>示例 1:</p>
-<p>输入: s1 = “aabcc”, s2 = “dbbca”, s3 = “aadbbcbcac”<br>输出: true<br>示例 2:</p>
-<p>输入: s1 = “aabcc”, s2 = “dbbca”, s3 = “aadbbbaccc”<br>输出: false</p>
+<p>给定字符串 s 和 t ，判断 s 是否为 t 的子序列。</p>
+<p>你可以认为 s 和 t 中仅包含英文小写字母。字符串 t 可能会很长（长度 ~= 500,000），而 s 是个短字符串（长度 &lt;=100）。</p>
+<p>字符串的一个子序列是原始字符串删除一些（也可以不删除）字符而不改变剩余字符相对位置形成的新字符串。（例如，”ace”是”abcde”的一个子序列，而”aec”不是）。</p>
+<p>示例 1:<br>s = “abc”, t = “ahbgdc”</p>
+<p>返回 true.</p>
+<p>示例 2:<br>s = “axc”, t = “ahbgdc”</p>
+<p>返回 false.</p>
 </blockquote>
-<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>要判断<code>s3</code>是否由<code>s1</code>和<code>s2</code>交错而成的, 首先看长度.</p>
-<p>如果<code>|s1|+|s2| != |s3|</code>, 那么说明<code>s3</code>不是由<code>s1</code>和<code>s2</code>交错而成的.</p>
-<p>假设<code>dp[i][j]</code>表示<code>s1</code>的前<code>i</code>个元素和<code>s2</code>的前<code>j</code>个元素<strong>能否</strong>构成<code>s3</code>的前<code>i+j</code>个元素.</p>
-<p>那么<code>dp[i][j]</code>取决于<code>dp[i-1][j]</code>, <code>dp[i][j-1]</code>以及对应位置的元素是否相等.</p>
+<h1 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h1><p>用指针<code>i</code>指向字符串<code>s</code>的元素, 指针<code>j</code>指向字符串<code>t</code>的元素.</p>
+<p>遍历字符串<code>t</code>, 如果<code>i</code>和<code>j</code>指向的元素相等, 则<code>i++</code>, 以便查看之后的元素.</p>
+<p>当字符串<code>t</code>遍历结束后, 如果字符串<code>s</code>也遍历完成, 即<code>i==s.length()</code>, 那么说明字符串<code>s</code>就是字符串<code>t</code>的子串.</p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/幻灯片1.PNG" alt="幻灯片1" style="zoom: 200%;" /></p>
 <p>代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isInterleave</span><span class="params">(String s1, String s2, String s3)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s1.length(), m = s2.length(), t = s3.length();</span><br><span class="line">        <span class="keyword">if</span> (n + m != t) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[n + <span class="number">1</span>][m + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= m; j++) &#123;</span><br><span class="line">                <span class="keyword">int</span> p = i + j - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (i &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    dp[i][j] = dp[i][j] || (s1.charAt(i - <span class="number">1</span>) == s3.charAt(p) &amp;&amp; dp[i - <span class="number">1</span>][j]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (j &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    dp[i][j] = dp[i][j] || (s2.charAt(j - <span class="number">1</span>) == s3.charAt(p) &amp;&amp; dp[i][j - <span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n][m];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200718092411513.png" alt="image-20200718092411513"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSubsequence</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length() &gt; t.length()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; s.length() &amp;&amp; j &lt; t.length()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s.charAt(i) == t.charAt(j)) i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i == s.length();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200727131740343.png" alt="image-20200727131740343"></p>
 
       
     </div>
@@ -428,7 +431,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
+            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag"># 双指针</a>
           
         </div>
       
@@ -441,8 +444,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/16/Leetcode-785-%E5%88%A4%E6%96%AD%E4%BA%8C%E5%88%86%E5%9B%BE/" rel="next" title="Leetcode-785-判断二分图">
-                <i class="fa fa-chevron-left"></i> Leetcode-785-判断二分图
+              <a href="/2020/07/23/Leetcode-64-%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/" rel="next" title="Leetcode-64-最小路径和">
+                <i class="fa fa-chevron-left"></i> Leetcode-64-最小路径和
               </a>
             
           </div>
@@ -450,10 +453,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/20/Leetcode-167-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E2%85%A1/" rel="prev" title="Leetcode-167-两数之和Ⅱ">
-                Leetcode-167-两数之和Ⅱ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -587,7 +586,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划"><span class="nav-number">2.</span> <span class="nav-text">动态规划</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双指针"><span class="nav-number">2.</span> <span class="nav-text">双指针</span></a></li></ol></div>
             
 
           </div>
@@ -1082,26 +1081,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

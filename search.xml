@@ -1173,4 +1173,31 @@ s=\max_{i=1..A.length, j=1..B.length}\{s_{ij}\}</script><p>代码如下</p>
         <tag>动态规划</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Leetcode-392-判断子序列</title>
+    <url>/2020/07/27/Leetcode-392-%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
+<p>给定字符串 s 和 t ，判断 s 是否为 t 的子序列。</p>
+<p>你可以认为 s 和 t 中仅包含英文小写字母。字符串 t 可能会很长（长度 ~= 500,000），而 s 是个短字符串（长度 &lt;=100）。</p>
+<p>字符串的一个子序列是原始字符串删除一些（也可以不删除）字符而不改变剩余字符相对位置形成的新字符串。（例如，”ace”是”abcde”的一个子序列，而”aec”不是）。</p>
+<p>示例 1:<br>s = “abc”, t = “ahbgdc”</p>
+<p>返回 true.</p>
+<p>示例 2:<br>s = “axc”, t = “ahbgdc”</p>
+<p>返回 false.</p>
+</blockquote>
+<h1 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h1><p>用指针<code>i</code>指向字符串<code>s</code>的元素, 指针<code>j</code>指向字符串<code>t</code>的元素.</p>
+<p>遍历字符串<code>t</code>, 如果<code>i</code>和<code>j</code>指向的元素相等, 则<code>i++</code>, 以便查看之后的元素.</p>
+<p>当字符串<code>t</code>遍历结束后, 如果字符串<code>s</code>也遍历完成, 即<code>i==s.length()</code>, 那么说明字符串<code>s</code>就是字符串<code>t</code>的子串.</p>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/幻灯片1.PNG" alt="幻灯片1" style="zoom: 200%;" /></p>
+<p>代码如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSubsequence</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length() &gt; t.length()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; s.length() &amp;&amp; j &lt; t.length()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s.charAt(i) == t.charAt(j)) i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i == s.length();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://kpicgo.oss-cn-shanghai.aliyuncs.com/image-20200727131740343.png" alt="image-20200727131740343"></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
 </search>
